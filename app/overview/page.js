@@ -36,10 +36,13 @@ export default function OverviewPage() {
     insightsData,
     metadata,
     openEvidence,
+    analysisStatus,
+    setAnalysisStatus,
   } = useApp();
 
   async function handleAnalyse() {
     setIsAnalyzing(true);
+    if (setAnalysisStatus) setAnalysisStatus("running");
     try {
       const res = await fetch("/api/analyze", {
         method: "POST",
@@ -53,6 +56,7 @@ export default function OverviewPage() {
       if (res && res.ok) {
         const data = await res.json().catch(() => null);
         if (data?.redirectUrl) {
+          if (setAnalysisStatus) setAnalysisStatus("done");
           router.push(data.redirectUrl);
           return;
         }
@@ -62,6 +66,7 @@ export default function OverviewPage() {
     }
     // "If the agent endpoint is not ready, navigate to Review Insights and do not fake a result."
     setTimeout(() => {
+      if (setAnalysisStatus) setAnalysisStatus("done");
       router.push("/reviews");
     }, 600);
   }
@@ -91,41 +96,43 @@ export default function OverviewPage() {
     loadData();
   }, [selectedProduct?.id, selectedProduct?.title]);
 
+  const isRunning = isAnalyzing || analysisStatus === "running";
+  const isDone = analysisStatus === "done";
+
   const workflowSteps = [
     {
       step: "01",
       title: "Product selected",
       desc: selectedProduct ? selectedProduct.productName : "Choose a product",
-      status: "completed",
+      status: selectedProduct ? "Done" : "Not started",
       href: "/products",
-      evidenceId: selectedProduct?.evidenceId,
     },
     {
       step: "02",
       title: "Competitors compared",
       desc: "Compare pricing and features against alternatives",
-      status: "completed",
+      status: isRunning ? "Running" : isDone ? "Done" : "Not started",
       href: "/competitors",
     },
     {
       step: "03",
       title: "Reviews analysed",
       desc: "Customer feedback and sentiment breakdown",
-      status: "completed",
+      status: isRunning ? "Running" : isDone ? "Done" : "Not started",
       href: "/reviews",
     },
     {
       step: "04",
       title: "Opportunities found",
       desc: "Market gaps and winning angles",
-      status: "completed",
+      status: isRunning ? "Running" : isDone ? "Done" : "Not started",
       href: "/opportunities",
     },
     {
       step: "05",
       title: "Content ready",
       desc: "Campaign copy generated across multiple formats",
-      status: "ready",
+      status: isRunning ? "Running" : isDone ? "Done" : "Not started",
       href: "/marketing-studio",
     },
   ];
@@ -313,13 +320,10 @@ export default function OverviewPage() {
               Five linked stages to turn research into marketing content
             </p>
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-status-success-bg text-status-success border border-sage/20 self-start sm:self-auto">
-            5 of 5 Stages Ready
-          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
-          {workflowSteps.map((ws, i) => (
+          {workflowSteps.map((ws) => (
             <Link
               key={ws.step}
               href={ws.href}
@@ -330,7 +334,20 @@ export default function OverviewPage() {
                   <span className="font-mono text-xs font-bold text-terracotta">
                     {ws.step}
                   </span>
-                  <CheckCircle2 className="w-4 h-4 text-status-success" />
+                  <span
+                    className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-medium flex items-center gap-1 ${
+                      ws.status === "Done"
+                        ? "bg-status-success-bg text-status-success border border-sage/20"
+                        : ws.status === "Running"
+                        ? "bg-terracotta/10 text-terracotta border border-terracotta/30"
+                        : "bg-app-card text-ink-muted border border-line-subtle"
+                    }`}
+                  >
+                    {ws.status === "Done" && <CheckCircle2 className="w-3 h-3" />}
+                    {ws.status === "Running" && <Loader2 className="w-3 h-3 animate-spin" />}
+                    {ws.status === "Not started" && <Clock className="w-3 h-3" />}
+                    <span>{ws.status}</span>
+                  </span>
                 </div>
                 <h3 className="text-xs font-bold text-ink-primary group-hover:text-terracotta transition-colors">
                   {ws.title}
