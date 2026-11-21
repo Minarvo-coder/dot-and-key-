@@ -127,20 +127,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Active Subject Pill (When Expanded) */}
-      {!isSidebarCollapsed && selectedProduct && (
-        <div className="px-3.5 py-3 border-b border-line-subtle/60 bg-app-subtle/50">
-          <div className="text-[10px] font-mono uppercase tracking-wider text-ink-muted font-medium mb-1">
-            Active Subject
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-terracotta shrink-0 animate-pulse" />
-            <span className="text-xs font-semibold text-ink-primary truncate" title={selectedProduct.productName}>
-              {selectedProduct.productName}
-            </span>
-          </div>
-        </div>
-      )}
+
 
       {/* Navigation Links Scroll Area */}
       <div className="flex-1 overflow-y-auto py-3 px-2.5 space-y-5 custom-scrollbar">

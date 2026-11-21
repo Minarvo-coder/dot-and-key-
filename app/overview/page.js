@@ -166,14 +166,7 @@ export default function OverviewPage() {
             <p className="text-[11px] font-mono text-ink-muted">
               Data collected from public pages (dotandkey.com, Nykaa, Amazon) on 21 Nov 2026
             </p>
-            <div className="pt-2 flex items-center gap-3 flex-wrap text-xs">
-              <span className="font-medium text-ink-muted">Active Subject:</span>
-              <span className="px-3 py-1 rounded-xl bg-app-subtle border border-terracotta/30 text-ink-primary font-semibold flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-terracotta" />
-                {selectedProduct.productName} (₹{selectedProduct.retailPriceINR})
-              </span>
-              <EvidenceBadge id={selectedProduct.evidenceId} />
-            </div>
+
           </div>
 
           {/* Quick CTA to Studio */}
