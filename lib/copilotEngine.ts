@@ -11,7 +11,7 @@ import {
   computeDiscountPct,
   Product,
   Competitor,
-} from "./data";
+} from "@/lib/data";
 
 export const CopilotAnswerSchema = z.object({
   takeaway: z.string(),
@@ -250,6 +250,7 @@ export function getDeterministicAnswer(question: string, productId: string = "DK
   // 5. Default Fallback: "That isn't in the data I have."
   return {
     takeaway: "That isn't in the data I have.",
+    cards: [],
     detail: "Missing from collected research: Amazon Best Sellers Rank, bought-in-past-month figures, dated competitor launches, and competitor negative complaint clusters.",
     caveat: "Data collected on 21 Nov 2026 from public Nykaa and dotandkey.com pages.",
     sources: [
