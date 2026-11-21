@@ -6,12 +6,7 @@ import {
   Menu,
   ChevronDown,
   Globe,
-  Bell,
   Check,
-  CheckCircle2,
-  AlertCircle,
-  Sparkles,
-  User,
   Package,
 } from "lucide-react";
 
@@ -22,21 +17,15 @@ export default function TopNav() {
     selectedLanguage,
     setSelectedLanguage,
     products,
-    notifications,
-    unreadNotificationsCount,
-    markAllNotificationsRead,
     setIsMobileSidebarOpen,
-    setIsSettingsModalOpen,
     metadata,
   } = useApp();
 
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-  const [isNotifOpen, setIsNotifOpen] = useState(false);
 
   const productRef = useRef(null);
   const langRef = useRef(null);
-  const notifRef = useRef(null);
 
   const languages = ["English", "Hindi", "Bengali", "Hinglish"];
 
@@ -48,9 +37,6 @@ export default function TopNav() {
       }
       if (langRef.current && !langRef.current.contains(e.target)) {
         setIsLangMenuOpen(false);
-      }
-      if (notifRef.current && !notifRef.current.contains(e.target)) {
-        setIsNotifOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -217,95 +203,10 @@ export default function TopNav() {
               )}
             </div>
 
-            {/* Notifications Popover */}
-            <div className="relative" ref={notifRef}>
-              <button
-                type="button"
-                onClick={() => setIsNotifOpen((prev) => !prev)}
-                className="relative p-2 rounded-xl bg-app-subtle hover:bg-app-card border border-line-subtle text-ink-muted hover:text-ink-primary transition-all shadow-clay-sm"
-                title="Intelligence notifications"
-              >
-                <Bell className="w-4 h-4" />
-                {unreadNotificationsCount > 0 && (
-                  <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-terracotta ring-2 ring-app-card" />
-                )}
-              </button>
-
-              {isNotifOpen && (
-                <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-app-card border border-line-subtle shadow-clay-lg py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="px-4 py-2 border-b border-line-subtle flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-ink-primary">Intelligence Feed</span>
-                      {unreadNotificationsCount > 0 && (
-                        <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-terracotta text-ink-inverted">
-                          {unreadNotificationsCount} new
-                        </span>
-                      )}
-                    </div>
-                    {unreadNotificationsCount > 0 && (
-                      <button
-                        type="button"
-                        onClick={markAllNotificationsRead}
-                        className="text-[11px] text-terracotta hover:underline font-medium"
-                      >
-                        Mark all read
-                      </button>
-                    )}
-                  </div>
-                  <div className="max-h-72 overflow-y-auto divide-y divide-line-subtle/40 custom-scrollbar">
-                    {notifications.length === 0 ? (
-                      <div className="px-4 py-6 text-center text-xs text-ink-muted">
-                        No notifications at this time.
-                      </div>
-                    ) : (
-                      notifications.map((n) => (
-                        <div
-                          key={n.id}
-                          className={`p-3.5 text-xs transition-colors ${
-                            !n.read ? "bg-app-subtle/60" : "hover:bg-app-subtle/30"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between gap-2 mb-1">
-                            <span className="font-semibold text-ink-primary flex items-center gap-1.5">
-                              {!n.read && (
-                                <span className="w-1.5 h-1.5 rounded-full bg-terracotta shrink-0" />
-                              )}
-                              {n.title}
-                            </span>
-                            <span className="text-[10px] text-ink-muted font-mono shrink-0">
-                              {n.timestamp}
-                            </span>
-                          </div>
-                          <p className="text-ink-muted leading-relaxed text-[11px]">
-                            {n.message}
-                          </p>
-                        </div>
-                      ))
-                    )}
-                  </div>
-                </div>
-              )}
+            {/* Demo mode tag */}
+            <div className="px-3 py-1 rounded-xl bg-app-subtle border border-line-subtle text-xs font-mono font-semibold text-ink-muted tracking-tight">
+              Demo mode
             </div>
-
-            {/* User Profile / Settings Trigger */}
-            <button
-              type="button"
-              onClick={() => setIsSettingsModalOpen(true)}
-              className="flex items-center gap-2 p-1 sm:px-2.5 sm:py-1.5 rounded-xl bg-app-subtle hover:bg-app-card border border-line-subtle hover:border-line-strong transition-all shadow-clay-sm"
-              title="User Profile & Settings"
-            >
-              <div className="w-7 h-7 rounded-lg bg-sand text-ink-primary flex items-center justify-center font-serif font-bold text-xs shrink-0">
-                DK
-              </div>
-              <div className="hidden lg:block text-left">
-                <div className="text-xs font-semibold text-ink-primary leading-tight">
-                  Brand Lead
-                </div>
-                <div className="text-[10px] text-ink-muted leading-tight font-medium">
-                  Dot & Key Growth
-                </div>
-              </div>
-            </button>
           </div>
         </div>
       </div>

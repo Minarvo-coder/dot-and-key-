@@ -12,14 +12,9 @@ import {
   TrendingUp,
   PenTool,
   Grid,
-  Feather,
-  History,
-  HelpCircle,
-  Settings,
   ChevronLeft,
   ChevronRight,
   X,
-  Sparkles,
 } from "lucide-react";
 
 export default function Sidebar() {
@@ -48,20 +43,13 @@ export default function Sidebar() {
         { label: "Competitor Analysis", href: "/competitors", icon: Scale },
         { label: "Review Insights", href: "/reviews", icon: MessageSquareQuote },
         { label: "Market Opportunities", href: "/opportunities", icon: TrendingUp },
+        { label: "SWOT Analysis", href: "/swot", icon: Grid },
       ],
     },
     {
       group: "CONTENT CREATION",
       items: [
         { label: "Marketing Studio", href: "/marketing-studio", icon: PenTool },
-      ],
-    },
-    {
-      group: "TOOLS & SETTINGS",
-      items: [
-        { label: "SWOT Analysis", href: "/swot", icon: Grid },
-        { label: "Brand Voice", href: "/brand-voice", icon: Feather },
-        { label: "Export History", href: "/exports", icon: History },
       ],
     },
   ];
@@ -174,39 +162,6 @@ export default function Sidebar() {
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Bottom Actions: Help & Settings */}
-      <div className="p-2.5 border-t border-line-subtle bg-app-card shrink-0 space-y-1">
-        <button
-          type="button"
-          onClick={() => {
-            setIsHelpModalOpen(true);
-            setIsMobileSidebarOpen(false);
-          }}
-          title={isSidebarCollapsed ? "Help & Documentation" : undefined}
-          className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-ink-muted hover:text-ink-primary hover:bg-app-subtle transition-all ${
-            isSidebarCollapsed ? "justify-center px-2" : ""
-          }`}
-        >
-          <HelpCircle className="w-4 h-4 shrink-0" />
-          {!isSidebarCollapsed && <span className="truncate">Help & Documentation</span>}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            setIsSettingsModalOpen(true);
-            setIsMobileSidebarOpen(false);
-          }}
-          title={isSidebarCollapsed ? "User Profile & Settings" : undefined}
-          className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-ink-muted hover:text-ink-primary hover:bg-app-subtle transition-all ${
-            isSidebarCollapsed ? "justify-center px-2" : ""
-          }`}
-        >
-          <Settings className="w-4 h-4 shrink-0" />
-          {!isSidebarCollapsed && <span className="truncate">Profile & Settings</span>}
-        </button>
       </div>
     </div>
   );

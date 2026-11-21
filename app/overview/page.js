@@ -173,13 +173,6 @@ export default function OverviewPage() {
       icon: PenTool,
       tag: "6 Formats",
     },
-    {
-      title: "SWOT Analysis",
-      desc: "Explore strengths, weaknesses, opportunities, and threats.",
-      href: "/swot",
-      icon: BarChart2,
-      tag: "Matrix",
-    },
   ];
 
   return (
