@@ -2,7 +2,10 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import {
-  PRODUCTS,
+  HERO_PRODUCT,
+  standaloneProducts,
+} from "@/data/productsLoader";
+import {
   COMPETITORS,
   EVIDENCE_REVIEWS,
   INSIGHTS_DATA,
@@ -15,7 +18,7 @@ import {
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]);
+  const [selectedProduct, setSelectedProduct] = useState(HERO_PRODUCT);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [activeAngleId, setActiveAngleId] = useState("monsoon-barrier");
   const [selectedAudienceId, setSelectedAudienceId] = useState("gen-z");
@@ -145,8 +148,8 @@ export function AppProvider({ children }) {
     markAllNotificationsRead,
     exportHistory,
     addExportRecord,
-    // Static fixtures
-    products: PRODUCTS,
+    // Real catalogue products
+    products: standaloneProducts,
     competitors: COMPETITORS,
     reviews: EVIDENCE_REVIEWS,
     insightsData: INSIGHTS_DATA,

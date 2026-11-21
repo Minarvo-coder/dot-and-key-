@@ -45,7 +45,7 @@ export default function CreativeStudioSection({
 
   function handleExportMarkdown() {
     const mdContent = `# Proof2Pitch AI: Grounded Campaign Package
-## Product: Dot & Key 72-Hour Hydrating Gel + Probiotics
+## Product: Dot & Key Dragon Fruit Bounce Gel Sunscreen SPF 50+ PA++++
 **Strategic Marketing Angle:** ${activeAngle.name}
 **Target Audience:** ${activeAudience.label}
 **Date Generated:** ${new Date().toLocaleDateString()}

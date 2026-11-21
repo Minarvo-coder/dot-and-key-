@@ -71,7 +71,7 @@ export default function OverviewPage() {
       desc: "6 campaign formats generated across 4 languages",
       status: "ready",
       href: "/marketing-studio",
-      evidenceId: "EVD-PROD-DK01",
+      evidenceId: "",
     },
   ];
 
