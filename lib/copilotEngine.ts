@@ -82,24 +82,25 @@ export function getDeterministicAnswer(question: string, productId: string = "DK
     const ing2 = product.ingredients?.[1] || "Vitamin E";
     const claim1 = product.claims?.[0] || "UV protection";
     const claim2 = product.claims?.[2] || "boosts glow";
+    const claim3 = product.claims?.[1] || "lightweight hydration";
 
     return {
-      takeaway: `Three Instagram captions for ${product.name}, anchored strictly in verified product claims and review themes.`,
+      takeaway: `Three Instagram captions for ${product.name}, using only product claims, ingredients, and review themes.`,
       cards: [
         {
-          label: "Product Specs",
+          label: "Dot & Key",
           rows: [
             `Rs ${product.price} for ${product.size}`,
-            `${facts.product.rating} rating (${facts.product.ratingCount.toLocaleString()} ratings)`,
-            product.mrp ? `${facts.product.discountPct}% off MRP Rs ${product.mrp}` : "Brand site offer",
+            `${facts.product.rating} rating`,
+            `${facts.product.ratingCount.toLocaleString()} ratings`,
           ],
         },
       ],
-      detail: `Caption 1: Glow without the grease. Formulated with ${ing1} and ${ing2} for daily ${claim1}. [Based on claims: ${claim1}, ${claim2}]\n\nCaption 2: Sun protection that leaves zero white cast and feels lightweight on skin. Rs ${product.price} for ${product.size}. [Based on review themes: glow, no white cast]\n\nCaption 3: Boost your skin glow and even tone with daily SPF 50+ protection. [Based on claims: ${claim1}, ${claim2}]`,
-      caveat: "Captions contain no unverified claims (such as dermatologist-tested or clinically proven) not present in the research pack.",
+      detail: `Caption 1: Daily sun protection infused with ${ing1} and ${ing2} for ${claim2}.\nBased on: claim "${claim2}" and ingredients\n\nCaption 2: Non-sticky, lightweight sunscreen that leaves zero white cast while delivering ${claim1}.\nBased on: review themes and claim "${claim1}"\n\nCaption 3: Keep your skin hydrated and glowing all day for Rs ${product.price} (${product.size}).\nBased on: claim "${claim3}" and pricing`,
+      caveat: "Captions contain no unverified claims (such as dermatologist-tested or clinically proven) absent from the research pack.",
       sources: [
         { label: `dotandkey.com: ${product.name}`, url: product.url },
-        { label: "Nykaa: Reviews snapshot", url: reviews[0]?.sourceUrl || product.url },
+        { label: "Nykaa: Customer Reviews", url: reviews[0]?.sourceUrl || product.url },
       ],
     };
   }
@@ -110,30 +111,23 @@ export function getDeterministicAnswer(question: string, productId: string = "DK
     const ppg = facts.product.pricePerGram ? `Rs ${facts.product.pricePerGram}/g` : `Rs ${product.price} for ${product.size}`;
 
     return {
-      takeaway: `Grounded SWOT analysis for ${product.name} based on collected pricing, ratings, and claims.`,
+      takeaway: `Short 4-part SWOT for ${product.name}, with every item grounded in pack facts.`,
       cards: [
         {
-          label: "Strengths (Pack Facts)",
+          label: "Dot & Key SWOT",
           rows: [
-            `Pricing: ${ppg} (Rs ${product.price} for ${product.size})`,
-            `Rating Count: ${facts.product.ratingCount.toLocaleString()} (#${facts.product.rankByRatingCount} of ${facts.product.totalRanked})`,
-            `Claims: ${product.claims.slice(0, 2).join(", ")}`,
-          ],
-        },
-        {
-          label: "Weaknesses & Threats",
-          rows: [
-            "Weakness: Not enough review data yet (small sample of 4 paraphrased reviews).",
-            `Threat: ${topCompetitor.name.split(" ")[0]} has ${topCompetitor.ratingCount.toLocaleString()} ratings.`,
-            "Launch data: Not independently verified in research pack.",
+            `Strengths: ${ppg} price per gram and ${facts.product.rating} rating across ${facts.product.ratingCount.toLocaleString()} ratings.`,
+            `Weaknesses: Not enough review data yet (pack contains 4 paraphrased reviews).`,
+            `Opportunities: Focus on ${product.claims.slice(0, 2).join(" & ")} against competitor alternatives.`,
+            `Threats: ${topCompetitor.name.split(" ")[0]} holds #${topCompetitor.rankByRatingCount} rank with ${topCompetitor.ratingCount.toLocaleString()} ratings.`,
           ],
         },
       ],
-      detail: `Every SWOT item is a hypothesis grounded in the pack. Weaknesses and threats reflect documented data boundaries rather than invented complaints.`,
-      caveat: "Amazon sales figures, BSR rankings, and offline retail distribution are unavailable in this dataset.",
+      detail: `1. Strengths: Pricing is ${ppg} (Rs ${product.price} for ${product.size}), ranking #${facts.product.rankByRatingCount} in rating attention.\n2. Weaknesses: Not enough review data yet to identify repeat purchase friction.\n3. Opportunities: Claims like "${product.claims[0]}" address key daily UV needs.\n4. Threats: Competitor positioning from ${topCompetitor.name.split(" ")[0]} with ${topCompetitor.ratingCount.toLocaleString()} ratings.`,
+      caveat: "Weaknesses and threats say 'Not enough review data yet' because negative review clusters are not populated in this dataset.",
       sources: [
         { label: `dotandkey.com: ${product.name}`, url: product.url },
-        { label: `Nykaa: ${topCompetitor.name.split(" ")[0]} Listing`, url: topCompetitor.url },
+        { label: `Nykaa: ${topCompetitor.name.split("(")[0].trim()}`, url: topCompetitor.url },
       ],
     };
   }
