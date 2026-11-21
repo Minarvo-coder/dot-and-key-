@@ -10,20 +10,20 @@ export default function StatusBanner({ metadata }) {
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-sage-dark shrink-0" />
           <span className="font-semibold text-ink-primary">
-            Data Integrity Guarantee:
+            Data Provenance:
           </span>
           <span>
-            Operating with verified demonstration fixtures for Dot & Key competitive research.
+            Operating with collected public retail data for Dot & Key competitive research.
           </span>
         </div>
 
         <div className="flex items-center gap-3 text-[11px] font-mono">
           <span className="flex items-center gap-1 text-ink-primary">
             <span className="w-1.5 h-1.5 rounded-full bg-sage-dark" />
-            4,820 Verified Reviews
+            Public Retail Pages (Nykaa & dotandkey.com)
           </span>
           <span>•</span>
-          <span className="text-terracotta font-medium">Traceable Evidence IDs Active</span>
+          <span className="text-terracotta font-medium">Public Source Links Active</span>
         </div>
       </div>
     </div>

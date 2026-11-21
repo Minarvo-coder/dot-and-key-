@@ -252,7 +252,7 @@ R-CSV-02,CP-DERMA-01,The Derma Co,1% Hyaluronic Sunscreen,Kiran M.,2026-11-15,3,
                   Select Active Research Dataset
                 </h3>
                 <p className="text-xs text-ink-muted mt-0.5">
-                  Seamlessly toggle between verified Phase 3 sunscreen market data, Phase 2 historical demonstration fixtures, or an empty sandbox state.
+                  Seamlessly toggle between sunscreen market data, historical demonstration fixtures, or an empty sandbox state.
                 </p>
               </div>
 
@@ -272,14 +272,14 @@ R-CSV-02,CP-DERMA-01,The Derma Co,1% Hyaluronic Sunscreen,Kiran M.,2026-11-15,3,
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-status-success-bg text-status-success border border-sage/30">
-                        Verified Research
+                        Public Research
                       </span>
                       {currentDatasetId === "verified-sunscreen" && (
                         <CheckCircle className="w-4 h-4 text-terracotta" />
                       )}
                     </div>
                     <h4 className="font-serif text-base font-bold text-ink-primary">
-                      Phase 3 Verified Sunscreens
+                      Sunscreen Market Research
                     </h4>
                     <p className="text-xs text-ink-muted leading-relaxed">
                       Dot & Key Vitamin C + E Sunscreen SPF 50+ benchmarked against The Derma Co, Dr. Sheth&apos;s, and Aqualogica. Includes verified reviews and ₹/g normalization.

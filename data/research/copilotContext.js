@@ -678,7 +678,7 @@ export function buildValidatedContext({
     currentPage: pageInfo,
     selectedLanguage,
     datasetLimitationNote:
-      "Grounded in KAIROS audited retail snapshot (Monsoon 2026 fixture of 4,820 aggregated reviews + Phase 3 verified November 2026 public sunscreen snapshot). Static snapshot, not a live real-time feed.",
+      "Grounded in public Nykaa and dotandkey.com pages collected on 21 Nov 2026. Static snapshot, not a live real-time feed.",
     selectedProduct: formattedSelectedProduct,
     relevantCompetitors,
     allFormattedCompetitors,

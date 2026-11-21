@@ -26,7 +26,7 @@ export const VERIFIED_MANIFEST = manifestData;
 export function getVerifiedSunscreenDataset() {
   return {
     id: "verified-sunscreen",
-    name: "Verified Sunscreen Intelligence (Phase 3 Research)",
+    name: "Sunscreen Market Intelligence",
     isVerified: true,
     metadata: verifiedData.metadata,
     primaryProduct: verifiedData.primaryProduct,

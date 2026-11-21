@@ -58,7 +58,7 @@ export default function CompetitorComparisonTable({
               Competitor Benchmark Matrix
             </h3>
             <span className="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-sand-light text-ink-primary border border-line-subtle">
-              Phase 3 Engine
+              Market Research Engine
             </span>
           </div>
           <p className="text-xs text-ink-muted mt-0.5">
