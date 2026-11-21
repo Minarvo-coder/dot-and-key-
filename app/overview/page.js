@@ -94,7 +94,7 @@ export default function OverviewPage() {
       }
     }
     loadData();
-  }, [selectedProduct?.id, selectedProduct?.title]);
+  }, [selectedProduct?.id, selectedProduct?.title, selectedProduct?.productName]);
 
   const isRunning = isAnalyzing || analysisStatus === "running";
   const isDone = analysisStatus === "done";
@@ -454,7 +454,7 @@ export default function OverviewPage() {
                       </span>
                     </div>
                     <p className="text-sm text-ink-primary leading-relaxed line-clamp-3 italic">
-                      "{insight.text}"
+                      &ldquo;{insight.text}&rdquo;
                     </p>
                     {insight.sourceUrl && (
                       <div className="pt-0.5">

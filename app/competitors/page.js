@@ -209,11 +209,15 @@ export default function CompetitorsPage() {
               <tr className="hover:bg-app-subtle/50 transition-colors">
                 <td className="py-3.5 px-4 font-semibold text-ink-primary">Hero Actives</td>
                 <td className="py-3.5 px-4 text-ink-primary bg-terracotta/5 border-x border-terracotta/10">
-                  {selectedProduct.activeIngredients.slice(0, 2).join(", ")}
+                  {selectedProduct?.activeIngredients
+                    ? selectedProduct.activeIngredients.slice(0, 2).join(", ")
+                    : "Key actives"}
                 </td>
                 {competitors.map((c) => (
                   <td key={c.id} className="py-3.5 px-4 text-ink-muted">
-                    {c.activeIngredients.slice(0, 2).join(", ")}
+                    {c.activeIngredients
+                      ? c.activeIngredients.slice(0, 2).join(", ")
+                      : "Key actives"}
                   </td>
                 ))}
               </tr>

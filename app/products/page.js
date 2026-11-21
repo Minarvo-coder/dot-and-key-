@@ -53,8 +53,8 @@ export default function ProductLibraryPage() {
           const q = searchQuery.toLowerCase();
           const matchName = p.productName.toLowerCase().includes(q);
           const matchCategory = p.category.toLowerCase().includes(q);
-          const matchIng = p.activeIngredients.some((ing) => ing.toLowerCase().includes(q));
-          const matchClaim = p.verifiedClaims?.some((c) => c.toLowerCase().includes(q));
+          const matchIng = (p.activeIngredients || []).some((ing) => ing.toLowerCase().includes(q));
+          const matchClaim = (p.verifiedClaims || []).some((c) => c.toLowerCase().includes(q));
           if (!matchName && !matchCategory && !matchIng && !matchClaim) return false;
         }
 
@@ -301,32 +301,36 @@ export default function ProductLibraryPage() {
                     </div>
 
                     {/* Active Ingredients */}
-                    <div className="space-y-1.5 pt-1">
-                      <span className="text-[10px] font-mono uppercase font-bold text-ink-muted block">
-                        Hero Actives
-                      </span>
-                      <div className="flex flex-wrap gap-1">
-                        {prod.activeIngredients.map((ing, i) => (
-                          <span
-                            key={i}
-                            className="text-[10px] px-2 py-0.5 rounded-md bg-app-subtle text-ink-primary border border-line-subtle"
-                          >
-                            {ing}
-                          </span>
-                        ))}
+                    {prod.activeIngredients && prod.activeIngredients.length > 0 && (
+                      <div className="space-y-1.5 pt-1">
+                        <span className="text-[10px] font-mono uppercase font-bold text-ink-muted block">
+                          Hero Actives
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {prod.activeIngredients.map((ing, i) => (
+                            <span
+                              key={i}
+                              className="text-[10px] px-2 py-0.5 rounded-md bg-app-subtle text-ink-primary border border-line-subtle"
+                            >
+                              {ing}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* Texture and Finish */}
-                    <div className="text-[11px] text-ink-muted bg-sand-light/50 p-2.5 rounded-lg border border-line-subtle">
-                      <strong>Texture:</strong> {prod.texture} ({prod.finish})
-                    </div>
+                    {prod.texture && (
+                      <div className="text-[11px] text-ink-muted bg-sand-light/50 p-2.5 rounded-lg border border-line-subtle">
+                        <strong>Texture:</strong> {prod.texture} ({prod.finish})
+                      </div>
+                    )}
 
                     {/* Verified Claims */}
-                    {prod.verifiedClaims && (
+                    {prod.verifiedClaims && prod.verifiedClaims.length > 0 && (
                       <div className="space-y-1">
                         <span className="text-[10px] font-mono uppercase font-bold text-ink-muted block">
-                          Verified Claims
+                          Claims
                         </span>
                         <ul className="space-y-0.5 text-[11px] text-ink-muted">
                           {prod.verifiedClaims.slice(0, 2).map((claim, i) => (

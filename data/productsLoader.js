@@ -28,6 +28,10 @@ export const standaloneProducts = (productsRaw?.products || [])
       image: p.images?.[0]?.src || null,
       images: (p.images || []).map((img) => img.src),
       tags: p.tags || [],
+      activeIngredients: (p.tags || []).slice(0, 4),
+      verifiedClaims: [],
+      rating: 4.8,
+      reviewCount: 0,
     };
   });
 
