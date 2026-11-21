@@ -374,34 +374,12 @@ export default function ProductLibraryPage() {
                   <div className="pt-4 mt-4 border-t border-line-subtle flex items-center justify-between gap-2">
                     <button
                       type="button"
-                      onClick={() => handleSelectProduct(prod)}
-                      className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 ${
-                        isSelected
-                          ? "bg-app-subtle text-terracotta border border-terracotta/40 hover:bg-terracotta/10"
-                          : "bg-terracotta text-ink-inverted hover:bg-terracotta-hover shadow-clay-sm"
-                      }`}
-                    >
-                      {isSelected ? (
-                        <>
-                          <CheckCircle className="w-3.5 h-3.5" />
-                          <span>Active Subject</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Analyse Product</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      type="button"
                       onClick={() => openEvidence(prod)}
-                      className="px-3 py-2.5 rounded-xl bg-app-subtle text-ink-primary hover:bg-app-card border border-line-subtle transition-colors text-xs font-medium flex items-center gap-1.5"
+                      className="flex-1 px-3 py-2.5 rounded-xl bg-app-subtle text-ink-primary hover:bg-app-card border border-line-subtle transition-colors text-xs font-medium flex items-center justify-center gap-1.5"
                       title="Inspect full product specification"
                     >
                       <Layers className="w-3.5 h-3.5 text-terracotta" />
-                      <span>Spec</span>
+                      <span>View Product</span>
                     </button>
 
                     {prod.sourceUrl && (
