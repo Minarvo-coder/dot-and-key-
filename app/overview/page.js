@@ -204,17 +204,17 @@ export default function OverviewPage() {
             )}
 
             <div className="space-y-3 flex-1 min-w-0">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light border border-line-subtle text-xs font-mono font-medium text-ink-primary">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light border border-line-subtle text-xs font-mono font-semibold text-ink-primary">
                 <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
                 <span>Dot & Key Intelligence</span>
               </div>
               <h1 className="font-serif text-3xl sm:text-4xl font-bold text-ink-primary tracking-tight leading-tight">
                 Pick a product. See what the market says. Get ready-to-use ads.
               </h1>
-              <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
+              <p className="text-sm sm:text-base text-ink-muted leading-relaxed">
                 Turn customer reviews and competitor data into ready-to-use marketing copy for Dot & Key.
               </p>
-              <p className="text-[11px] font-mono text-ink-muted">
+              <p className="text-xs sm:text-sm font-mono text-ink-muted">
                 Data collected from public pages (dotandkey.com, Nykaa, Amazon) on 21 Nov 2026
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function OverviewPage() {
               type="button"
               onClick={handleAnalyse}
               disabled={isAnalyzing}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-terracotta text-ink-inverted text-xs sm:text-sm font-semibold hover:bg-terracotta-hover disabled:opacity-75 disabled:cursor-not-allowed transition-all shadow-clay-sm"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-terracotta text-ink-inverted text-sm font-semibold hover:bg-terracotta-hover disabled:opacity-75 disabled:cursor-not-allowed transition-all shadow-clay-sm"
             >
               {isAnalyzing ? (
                 <>
@@ -243,7 +243,7 @@ export default function OverviewPage() {
             </button>
             <Link
               href="/products"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-app-subtle border border-line-subtle text-ink-primary text-xs sm:text-sm font-semibold hover:bg-app-card transition-all"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-app-subtle border border-line-subtle text-ink-primary text-sm font-semibold hover:bg-app-card transition-all"
             >
               <Layers className="w-4 h-4 text-ink-muted" />
               <span>Browse products</span>
@@ -252,11 +252,11 @@ export default function OverviewPage() {
         </div>
       </div>
 
-      {/* 2. Research Summary Metric Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* 2. Research Summary Metric Cards - Stacks in 1 col below 640px/768px */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-5 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm space-y-2">
           <div className="flex items-center justify-between text-ink-muted">
-            <span className="text-[11px] font-mono uppercase font-semibold">Customer Reviews</span>
+            <span className="text-xs font-mono uppercase font-bold text-ink-primary">Customer Reviews</span>
             <Database className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
@@ -264,7 +264,7 @@ export default function OverviewPage() {
               ? dataStats.reviews.count.toLocaleString()
               : "No data yet"}
           </div>
-          <div className="text-[11px] text-ink-muted flex items-center gap-1">
+          <div className="text-sm text-ink-muted flex items-center gap-1">
             {dataStats.reviews.count !== null && dataStats.reviews.count !== undefined ? (
               <span>From public pages</span>
             ) : (
@@ -275,20 +275,20 @@ export default function OverviewPage() {
 
         <div className="p-5 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm space-y-2">
           <div className="flex items-center justify-between text-ink-muted">
-            <span className="text-[11px] font-mono uppercase font-semibold">Dot & Key Catalogue</span>
+            <span className="text-xs font-mono uppercase font-bold text-ink-primary">Dot & Key Catalogue</span>
             <Layers className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
             {dataStats.catalogue.count} Products
           </div>
-          <div className="text-[11px] text-ink-muted flex items-center gap-1">
+          <div className="text-sm text-ink-muted flex items-center gap-1">
             <span>Price range: {dataStats.catalogue.priceRange || dataStats.catalogue.priceRangeFormatted}</span>
           </div>
         </div>
 
         <div className="p-5 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm space-y-2">
           <div className="flex items-center justify-between text-ink-muted">
-            <span className="text-[11px] font-mono uppercase font-semibold">Competitors Compared</span>
+            <span className="text-xs font-mono uppercase font-bold text-ink-primary">Competitors Compared</span>
             <Scale className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
@@ -296,7 +296,7 @@ export default function OverviewPage() {
               ? `${dataStats.competitors.count} Brands`
               : "No data yet"}
           </div>
-          <div className="text-[11px] text-ink-muted truncate">
+          <div className="text-sm text-ink-muted truncate">
             {dataStats.competitors.names && dataStats.competitors.names.length > 0
               ? dataStats.competitors.names.join(", ")
               : "No competitors loaded yet"}
@@ -305,7 +305,7 @@ export default function OverviewPage() {
 
         <div className="p-5 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm space-y-2">
           <div className="flex items-center justify-between text-ink-muted">
-            <span className="text-[11px] font-mono uppercase font-semibold">Sentiment</span>
+            <span className="text-xs font-mono uppercase font-bold text-ink-primary">Sentiment</span>
             <ShieldCheck className="w-4 h-4 text-sage-dark" />
           </div>
           <div
@@ -317,7 +317,7 @@ export default function OverviewPage() {
               ? `${dataStats.reviews.sentiment.positivePercent}% Positive`
               : "No data yet"}
           </div>
-          <div className="text-[11px] text-ink-muted">
+          <div className="text-sm text-ink-muted">
             {dataStats.reviews.sentiment
               ? `${dataStats.reviews.sentiment.neutralPercent}% Neutral • ${dataStats.reviews.sentiment.criticalPercent}% Critical`
               : "Awaiting review data"}
@@ -332,7 +332,7 @@ export default function OverviewPage() {
             <h2 className="font-serif text-xl font-bold text-ink-primary">
               Product-to-Content Workflow Progress
             </h2>
-            <p className="text-xs text-ink-muted mt-0.5">
+            <p className="text-sm text-ink-muted mt-0.5">
               Five linked stages to turn research into marketing content
             </p>
           </div>
@@ -351,7 +351,7 @@ export default function OverviewPage() {
                     {ws.step}
                   </span>
                   <span
-                    className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-medium flex items-center gap-1 ${
+                    className={`text-xs font-mono px-2 py-0.5 rounded-full font-semibold flex items-center gap-1 ${
                       ws.status === "Done"
                         ? "bg-status-success-bg text-status-success border border-sage/20"
                         : ws.status === "Running"
@@ -359,22 +359,22 @@ export default function OverviewPage() {
                         : "bg-app-card text-ink-muted border border-line-subtle"
                     }`}
                   >
-                    {ws.status === "Done" && <CheckCircle2 className="w-3 h-3" />}
-                    {ws.status === "Running" && <Loader2 className="w-3 h-3 animate-spin" />}
-                    {ws.status === "Not started" && <Clock className="w-3 h-3" />}
+                    {ws.status === "Done" && <CheckCircle2 className="w-3.5 h-3.5" />}
+                    {ws.status === "Running" && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                    {ws.status === "Not started" && <Clock className="w-3.5 h-3.5" />}
                     <span>{ws.status}</span>
                   </span>
                 </div>
-                <h3 className="text-xs font-bold text-ink-primary group-hover:text-terracotta transition-colors">
+                <h3 className="text-sm font-bold text-ink-primary group-hover:text-terracotta transition-colors">
                   {ws.title}
                 </h3>
-                <p className="text-[11px] text-ink-muted mt-1 leading-relaxed">
+                <p className="text-sm text-ink-muted mt-1 leading-relaxed">
                   {ws.desc}
                 </p>
               </div>
-              <div className="pt-3 mt-3 border-t border-line-subtle/50 flex items-center justify-between text-[10px] font-mono text-ink-muted">
+              <div className="pt-3 mt-3 border-t border-line-subtle/50 flex items-center justify-between text-xs font-mono text-ink-muted">
                 <span>View Stage</span>
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform text-terracotta" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-terracotta" />
               </div>
             </Link>
           ))}
@@ -389,7 +389,7 @@ export default function OverviewPage() {
             <h2 className="font-serif text-xl font-bold text-ink-primary">
               Quick Actions
             </h2>
-            <span className="text-xs text-ink-muted">Direct navigation</span>
+            <span className="text-xs text-ink-muted font-mono font-medium">Direct navigation</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -401,19 +401,19 @@ export default function OverviewPage() {
                   href={qa.href}
                   className="p-4 rounded-xl bg-app-card hover:bg-app-subtle border border-line-subtle hover:border-terracotta/40 transition-all group shadow-clay-sm flex items-start gap-3.5"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center shrink-0 group-hover:bg-terracotta group-hover:text-ink-inverted transition-colors">
-                    <Icon className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center shrink-0 group-hover:bg-terracotta group-hover:text-ink-inverted transition-colors">
+                    <Icon className="w-5 h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-1 mb-1">
-                      <h3 className="text-xs font-bold text-ink-primary group-hover:text-terracotta transition-colors truncate">
+                      <h3 className="text-sm font-bold text-ink-primary group-hover:text-terracotta transition-colors truncate">
                         {qa.title}
                       </h3>
-                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-sand-light text-ink-primary border border-line-subtle shrink-0">
+                      <span className="text-xs font-mono px-2 py-0.5 rounded bg-sand-light text-ink-primary border border-line-subtle shrink-0 font-medium">
                         {qa.tag}
                       </span>
                     </div>
-                    <p className="text-[11px] text-ink-muted leading-relaxed">
+                    <p className="text-sm text-ink-muted leading-relaxed">
                       {qa.desc}
                     </p>
                   </div>
@@ -429,13 +429,13 @@ export default function OverviewPage() {
             <h2 className="font-serif text-xl font-bold text-ink-primary">
               Top insights
             </h2>
-            <span className="text-xs text-ink-muted">Public Reviews</span>
+            <span className="text-xs text-ink-muted font-mono font-medium">Public Reviews</span>
           </div>
 
           <div className="p-4 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm">
             {!dataStats.reviews.topInsights || dataStats.reviews.topInsights.length === 0 ? (
-              <div className="py-8 text-center text-xs text-ink-muted space-y-1">
-                <p className="font-medium text-ink-primary">No reviews loaded yet</p>
+              <div className="py-8 text-center text-sm text-ink-muted space-y-1">
+                <p className="font-semibold text-ink-primary">No reviews loaded yet</p>
                 <p>Add reviews to /data/reviews.json to see live insights.</p>
               </div>
             ) : (
@@ -443,17 +443,17 @@ export default function OverviewPage() {
                 {dataStats.reviews.topInsights.slice(0, 3).map((insight, idx) => (
                   <div key={insight.id || idx} className="py-3 first:pt-0 last:pb-0 space-y-1.5">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-1 text-xs text-terracotta">
+                      <div className="flex items-center gap-1 text-sm text-terracotta">
                         {"★".repeat(insight.stars || 5)}
-                        <span className="text-[10px] text-ink-muted ml-1">
+                        <span className="text-xs text-ink-muted ml-1">
                           ({insight.stars || 5}/5)
                         </span>
                       </div>
-                      <span className="text-[10px] font-mono text-ink-muted">
+                      <span className="text-xs font-mono text-ink-muted font-medium">
                         {insight.sourceName}
                       </span>
                     </div>
-                    <p className="text-xs text-ink-primary leading-relaxed line-clamp-3 italic">
+                    <p className="text-sm text-ink-primary leading-relaxed line-clamp-3 italic">
                       "{insight.text}"
                     </p>
                     {insight.sourceUrl && (
@@ -462,7 +462,7 @@ export default function OverviewPage() {
                           href={insight.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[11px] font-mono text-terracotta hover:underline inline-flex items-center gap-1"
+                          className="text-xs font-mono text-terracotta hover:underline inline-flex items-center gap-1 font-semibold"
                         >
                           View source ↗
                         </a>

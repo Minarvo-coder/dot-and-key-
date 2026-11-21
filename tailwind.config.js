@@ -16,7 +16,7 @@ module.exports = {
         },
         ink: {
           primary: "#231F20",
-          muted: "#81776F",
+          muted: "#5A524B",
           inverted: "#F8F3EC",
         },
         terracotta: {
