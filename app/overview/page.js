@@ -146,41 +146,6 @@ export default function OverviewPage() {
     },
   ];
 
-  const recentActivity = [
-    {
-      id: "act-1",
-      time: "12 mins ago",
-      title: "Active Subject Synchronized",
-      desc: `Analysis calibrated to ${selectedProduct.productName} (₹${selectedProduct.retailPriceINR}).`,
-      evidenceId: selectedProduct.evidenceId,
-      badge: "Workspace",
-    },
-    {
-      id: "act-2",
-      time: "45 mins ago",
-      title: "Competitor Vulnerability Flagged",
-      desc: "18% of Minimalist B5 Gel reviews cite occlusive sweat trapping in monsoon humidity.",
-      evidenceId: "EVD-REV-CP001",
-      badge: "Competitor Defect",
-    },
-    {
-      id: "act-3",
-      time: "2 hours ago",
-      title: "Customer Sentiment Mapped",
-      desc: "Arundhati S. (Mumbai) verified 10-second watery absorption during coastal commute.",
-      evidenceId: "EVD-REV-DK001",
-      badge: "Customer Love",
-    },
-    {
-      id: "act-4",
-      time: "3 hours ago",
-      title: "High-Conviction Angle Mapped",
-      desc: "'The Sweatless Monsoon Barrier Shield' mapped with 3 verified evidence citations.",
-      evidenceId: "EVD-REV-DK002",
-      badge: "Opportunity",
-    },
-  ];
-
   return (
     <div className="space-y-8 animate-in fade-in duration-200">
       {/* 1. Welcome Hero Section */}
@@ -390,37 +355,55 @@ export default function OverviewPage() {
           </div>
         </div>
 
-        {/* Recent Activity Feed (1 col on large) */}
+        {/* Top Insights (Replacing fake Recent Intelligence) */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="font-serif text-xl font-bold text-ink-primary">
-              Recent Intelligence
+              Top insights
             </h2>
-            <span className="text-xs text-ink-muted">Audit Stream</span>
+            <span className="text-xs text-ink-muted">Public Reviews</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm divide-y divide-line-subtle/50">
-            {recentActivity.map((ra) => (
-              <div key={ra.id} className="py-3 first:pt-0 last:pb-0 space-y-1.5">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-app-subtle text-ink-primary border border-line-subtle font-semibold">
-                    {ra.badge}
-                  </span>
-                  <span className="text-[10px] font-mono text-ink-muted">
-                    {ra.time}
-                  </span>
-                </div>
-                <h4 className="text-xs font-semibold text-ink-primary">
-                  {ra.title}
-                </h4>
-                <p className="text-[11px] text-ink-muted leading-relaxed">
-                  {ra.desc}
-                </p>
-                <div className="pt-0.5">
-                  <EvidenceBadge id={ra.evidenceId} />
-                </div>
+          <div className="p-4 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm">
+            {!dataStats.reviews.topInsights || dataStats.reviews.topInsights.length === 0 ? (
+              <div className="py-8 text-center text-xs text-ink-muted space-y-1">
+                <p className="font-medium text-ink-primary">No reviews loaded yet</p>
+                <p>Add reviews to /data/reviews.json to see live insights.</p>
               </div>
-            ))}
+            ) : (
+              <div className="divide-y divide-line-subtle/50">
+                {dataStats.reviews.topInsights.slice(0, 3).map((insight, idx) => (
+                  <div key={insight.id || idx} className="py-3 first:pt-0 last:pb-0 space-y-1.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-1 text-xs text-terracotta">
+                        {"★".repeat(insight.stars || 5)}
+                        <span className="text-[10px] text-ink-muted ml-1">
+                          ({insight.stars || 5}/5)
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono text-ink-muted">
+                        {insight.sourceName}
+                      </span>
+                    </div>
+                    <p className="text-xs text-ink-primary leading-relaxed line-clamp-3 italic">
+                      "{insight.text}"
+                    </p>
+                    {insight.sourceUrl && (
+                      <div className="pt-0.5">
+                        <a
+                          href={insight.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-mono text-terracotta hover:underline inline-flex items-center gap-1"
+                        >
+                          View source ↗
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
