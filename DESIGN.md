@@ -46,7 +46,7 @@
 
 - **Headings and Display**: Serif font family (Playfair Display, DM Serif Display, Georgia) for editorial distinction.
 - **Body and Controls**: Clean sans-serif font family (Inter, DM Sans, system-ui) for data legibility.
-- **Evidence IDs and Metrics**: Monospace font family (JetBrains Mono, Courier New) for tabular codes like `[EVD-REV-DK001]`.
+- **Evidence Links and Metrics**: Monospace font family (JetBrains Mono, Courier New) for tabular codes and sources.
 - **Copywriting Constraint**: Never use the em dash symbol. Use commas, periods, colons, or parentheses instead.
 
 ---
@@ -57,7 +57,7 @@
    - Primary: Terracotta fill (`#B4532A`), inverted text (`#F8F3EC`), subtle hover lift, accessible focus ring.
    - Secondary: Ceramic surface (`#F8F3EC`), charcoal text (`#231F20`), border `#D9CFC3`.
    - Ghost: Transparent background, muted text, subtle hover tint.
-2. **Citation Badges (`[EVD-...]`)**:
+2. **Citation Source Badges**:
    - Monospace font, 11px uppercase, font-weight 600.
    - Background `#E3E8E5` or `#F2EAE1`, text `#231F20`, border `#D9CFC3`.
    - Cursor pointer with hover highlight: clicking opens the Evidence Drawer inspector.

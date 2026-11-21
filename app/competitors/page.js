@@ -45,11 +45,11 @@ export default function CompetitorsPage() {
 
   // Evidence map for competitor flaw reviews
   const competitorEvidenceMap = {
-    "CP-MIN-01": "EVD-REV-CP001",
-    "CP-PLUM-02": "EVD-REV-CP002",
-    "CP-DERMA-03": "EVD-REV-CP003",
-    "CP-FOXTALE-04": "EVD-REV-CP004",
-    "CP-AQUA-05": "EVD-REV-CP005",
+    "CP-MIN-01": "REV-CP001",
+    "CP-PLUM-02": "REV-CP002",
+    "CP-DERMA-03": "REV-CP003",
+    "CP-FOXTALE-04": "REV-CP004",
+    "CP-AQUA-05": "REV-CP005",
   };
 
   return (

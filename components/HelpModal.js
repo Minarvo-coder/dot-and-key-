@@ -81,10 +81,10 @@ export default function HelpModal() {
           <div className="space-y-2.5 p-4 rounded-xl bg-app-subtle border border-line-subtle">
             <h3 className="font-serif text-sm font-bold text-ink-primary flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-sage-dark" />
-              <span>2. Traceable Evidence Badges ([EVD-...])</span>
+              <span>2. Traceable Evidence Badges (Source links)</span>
             </h3>
             <p className="leading-relaxed">
-              Whenever you encounter a monospace badge like <span className="font-mono px-1.5 py-0.5 rounded bg-sage-soft text-ink-primary border border-line-subtle font-semibold">[EVD-REV-DK001]</span>, clicking it opens the slide-over Evidence Inspector. This reveals the actual verbatim customer review, platform source (Nykaa, Amazon), reviewer city, date, and sentiment cluster.
+              Whenever you encounter a monospace badge like <span className="font-mono px-1.5 py-0.5 rounded bg-sage-soft text-ink-primary border border-line-subtle font-semibold">View source</span>, clicking it opens the slide-over Evidence Inspector. This reveals the actual verbatim customer review, platform source (Nykaa, Amazon), reviewer city, date, and sentiment cluster.
             </p>
           </div>
 

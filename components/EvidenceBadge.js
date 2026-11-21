@@ -1,26 +1,40 @@
 "use client";
 
 import React from "react";
-import { useApp } from "@/components/AppContext";
 import { ExternalLink } from "lucide-react";
+import { EVIDENCE_REVIEWS, COMPETITORS, PRODUCTS } from "@/data/researchFixtures";
 
-export default function EvidenceBadge({ id, label, className = "" }) {
-  const { openEvidence } = useApp();
+export default function EvidenceBadge({ id, sourceUrl, className = "" }) {
+  let url = sourceUrl;
 
-  if (!id) return null;
+  if (!url && id) {
+    const rev = EVIDENCE_REVIEWS?.find((r) => r.id === id || r.evidenceId === id);
+    if (rev?.sourceUrl || rev?.url) url = rev.sourceUrl || rev.url;
+
+    if (!url) {
+      const comp = COMPETITORS?.find((c) => c.id === id || c.evidenceId === id);
+      if (comp?.sourceUrl || comp?.url) url = comp.sourceUrl || comp.url;
+    }
+
+    if (!url) {
+      const prod = PRODUCTS?.find((p) => p.id === id || p.evidenceId === id);
+      if (prod?.sourceUrl || prod?.url) url = prod.sourceUrl || prod.url;
+    }
+  }
+
+  // Where a source exists, show a "View source" link. Where none exists, show nothing.
+  if (!url) return null;
 
   return (
-    <button
-      type="button"
-      onClick={(e) => {
-        e.stopPropagation();
-        openEvidence(id);
-      }}
-      className={`inline-flex items-center gap-1 font-mono text-[11px] font-semibold tracking-wide px-2 py-0.5 rounded-md bg-sage-soft text-ink-primary hover:bg-terracotta hover:text-ink-inverted border border-line-subtle transition-all cursor-pointer select-none group shadow-sm ${className}`}
-      title={`Inspect verified evidence [${id}]`}
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-1 font-mono text-xs font-semibold text-terracotta hover:underline ${className}`}
+      title="View public source"
     >
-      <span>[{label || id}]</span>
-      <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100 transition-opacity" />
-    </button>
+      <span>View source</span>
+      <ExternalLink className="w-3 h-3" />
+    </a>
   );
 }
