@@ -1,0 +1,566 @@
+{
+  "meta": {
+    "title": "Dot & Key sunscreen market research - source-backed starter dataset",
+    "researchPreparedOn": "2026-11-21",
+    "dataSnapshotNote": "Online sources may be cached; collectedOn is research compilation date, NOT guaranteed measurement time. Prices/promotions/review counts may change.",
+    "scope": "Three Dot & Key sunscreen variants (80g), five competitor sunscreen listings, eight customer-review paraphrases and sourced demand signals.",
+    "unavailable": "Amazon bought-in-past-month, Amazon Best Sellers Rank and dated competitor launches were not independently verified. Not populated.",
+    "caution": "Nykaa rating counts can aggregate across variants. Brand-site review figures can include related products. Ratings and ratingsCount are not sales.",
+    "schema": "JSON contains fields as requested, plus audit metadata."
+  },
+  "products": [
+    {
+      "id": "DK-VITC-80",
+      "name": "Dot & Key Vitamin C + E Sunscreen SPF 50+ PA++++",
+      "category": "Face sunscreen",
+      "price": 506,
+      "size": "80g",
+      "tags": [
+        "all skin types",
+        "glow",
+        "water-light",
+        "SPF 50+"
+      ],
+      "claims": [
+        "UV protection",
+        "lightweight hydration",
+        "boosts glow",
+        "even-toned skin"
+      ],
+      "ingredients": [
+        "Vitamin C (ascorbyl glucoside)",
+        "Vitamin E (tocopheryl acetate)",
+        "blood orange extract",
+        "UV filters"
+      ],
+      "url": "https://www.dotandkey.com/products/dot-key-vitamin-c-e-spf-50-pa-face-sunscreen-for-glowing-skin-uv-protection-for-dull-skin",
+      "mrp": 595,
+      "sourceId": "DK-VITC",
+      "priceContext": "Brand website selected 80g; Flat 15% site offer applied."
+    },
+    {
+      "id": "DK-WATER-80",
+      "name": "Dot & Key Watermelon Cooling Sunscreen SPF 50+ PA++++",
+      "category": "Face sunscreen",
+      "price": 506,
+      "size": "80g",
+      "tags": [
+        "oily/combination skin",
+        "cooling",
+        "bestseller",
+        "SPF 50+"
+      ],
+      "claims": [
+        "instant cooling",
+        "UV protection",
+        "oil control",
+        "light hydration"
+      ],
+      "ingredients": [
+        "watermelon extract",
+        "hyaluronic acid",
+        "aloe vera",
+        "UV filters"
+      ],
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "mrp": 595,
+      "sourceId": "DK-WATER",
+      "priceContext": "Brand website selected 80g; Flat 15% site offer applied."
+    },
+    {
+      "id": "DK-CICA-80",
+      "name": "Dot & Key Cica + Niacinamide Mattifying Gel Sunscreen SPF 50+ PA++++",
+      "category": "Face sunscreen",
+      "price": 506,
+      "size": "80g",
+      "tags": [
+        "oily/acne-prone skin",
+        "matte",
+        "trending",
+        "SPF 50+"
+      ],
+      "claims": [
+        "oil control",
+        "UV protection",
+        "skin soothing",
+        "matte finish"
+      ],
+      "ingredients": [
+        "niacinamide",
+        "cica",
+        "UV filters",
+        "glycerin"
+      ],
+      "url": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "mrp": 595,
+      "sourceId": "DK-CICA",
+      "priceContext": "Brand website selected 80g; Flat 15% site offer applied."
+    }
+  ],
+  "competitors": [
+    {
+      "productId": "CMP-AQUAL-50",
+      "name": "Aqualogica Glow+ Dewy Sunscreen Gel SPF 50+ PA++++ (50g)",
+      "price": 391,
+      "rating": 4.4,
+      "ratingCount": 202032,
+      "claims": [
+        "dewy gel finish",
+        "papaya and Vitamin C",
+        "SPF 50+ PA++++"
+      ],
+      "url": "https://www.nykaa.com/aqualogica-glow-dewy-sunscreen/p/5009759?pps=5&productId=5009759",
+      "comparesToProductId": "DK-VITC-80",
+      "size": "50g",
+      "mrp": 449,
+      "sourceId": "NYK-AQUAL",
+      "ratingCountScope": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-MINI-50",
+      "name": "Minimalist Light Fluid SPF 50 Face Sunscreen (50ml)",
+      "price": 474,
+      "rating": 4.4,
+      "ratingCount": 20143,
+      "claims": [
+        "light fluid",
+        "everyday sun protection",
+        "SPF 50"
+      ],
+      "url": "https://www.nykaa.com/minimalist-light-fluid-spf-50-face-sunscreen/p/20540004?productId=20540004&redirectpath=slug&skuId=14573042",
+      "comparesToProductId": "DK-VITC-80",
+      "size": "50ml",
+      "mrp": 499,
+      "sourceId": "NYK-MINI",
+      "ratingCountScope": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-DERMA-50",
+      "name": "The Derma Co 1% Hyaluronic Sunscreen Aqua Gel (50g)",
+      "price": 424,
+      "rating": 4.4,
+      "ratingCount": 189350,
+      "claims": [
+        "hyaluronic acid",
+        "aqua gel",
+        "SPF 50"
+      ],
+      "url": "https://www.nykaa.com/the-derma-co-1-hyaluronic-sunscreen-aqua-ultra-light-gel-with-spf-50-pa-for-broad-spectrum/p/2777158",
+      "comparesToProductId": "DK-VITC-80",
+      "size": "50g",
+      "mrp": 499,
+      "sourceId": "NYK-DERMA",
+      "ratingCountScope": "Listing-level; figure from different cached listing snapshots"
+    },
+    {
+      "productId": "CMP-REQUIL-50",
+      "name": "Re'equil Ultra Matte Dry Touch Sunscreen SPF 50 PA++++ (50g)",
+      "price": 581,
+      "rating": 4.4,
+      "ratingCount": 63338,
+      "claims": [
+        "ultra-matte finish",
+        "dry-touch gel",
+        "SPF 50 PA++++"
+      ],
+      "url": "https://www.nykaa.com/re-equil-ultra-matte-dry-touch-sunscreen-gel-spf-50/p/8425811?pps=16&productId=8425811",
+      "comparesToProductId": "DK-VITC-80",
+      "size": "50g",
+      "mrp": 645,
+      "sourceId": "NYK-REQUIL",
+      "ratingCountScope": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-WISH-50",
+      "name": "WishCare Vitamin C Pure Glow Brightening Face Sunscreen (50ml)",
+      "price": 394,
+      "rating": 4.3,
+      "ratingCount": 10361,
+      "claims": [
+        "Vitamin C",
+        "kojic acid",
+        "licorice",
+        "SPF 50 PA++++"
+      ],
+      "url": "https://www.nykaa.com/wishcare-vitamin-c-pure-glow-brightening-face-sunscreen/p/28817698?pps=4&productId=28817698",
+      "comparesToProductId": "DK-VITC-80",
+      "size": "50ml",
+      "mrp": 499,
+      "sourceId": "NYK-WISH",
+      "ratingCountScope": "Listing-level; may combine variants"
+    }
+  ],
+  "reviews": [
+    {
+      "productId": "DK-VITC-80",
+      "brand": "Dot & Key",
+      "source": "Nykaa (verified buyer, 26 May 2025; paraphrase)",
+      "stars": 5,
+      "text": "Reviewer associates the sunscreen with a glowing-looking finish and considers it affordable.",
+      "date": "2025-05-26",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "sourceId": "NYK-VITC",
+      "textType": "paraphrase"
+    },
+    {
+      "productId": "DK-VITC-80",
+      "brand": "Dot & Key",
+      "source": "Nykaa (verified buyer, 20 Aug 2024; paraphrase)",
+      "stars": 5,
+      "text": "Reviewer describes a thin, milky texture with a mild fragrance and a finish that does not feel overly oily.",
+      "date": "2024-08-20",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "sourceId": "NYK-VITC",
+      "textType": "paraphrase"
+    },
+    {
+      "productId": "DK-VITC-80",
+      "brand": "Dot & Key",
+      "source": "Nykaa (verified buyer, 6 Jun 2023; paraphrase)",
+      "stars": 5,
+      "text": "Reviewer describes a water-light gel texture, complete absorption and no noticeable white cast.",
+      "date": "2023-06-06",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "sourceId": "NYK-VITC",
+      "textType": "paraphrase"
+    },
+    {
+      "productId": "DK-VITC-80",
+      "brand": "Dot & Key",
+      "source": "Nykaa (verified buyer, 12 Feb 2023; paraphrase)",
+      "stars": 5,
+      "text": "Reviewer highlights non-sticky application, easy blending and a favorable promotional deal.",
+      "date": "2023-02-12",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "sourceId": "NYK-VITC",
+      "textType": "paraphrase"
+    },
+    {
+      "productId": "DK-WATER-80",
+      "brand": "Dot & Key",
+      "source": "Dot & Key product page (Juhi Mathur; paraphrase)",
+      "stars": null,
+      "text": "Customer with oily skin says the sunscreen feels light and keeps the face looking fresh rather than oily.",
+      "date": null,
+      "sourceUrl": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "sourceId": "DK-WATER",
+      "textType": "paraphrase; rating/date unavailable"
+    },
+    {
+      "productId": "DK-WATER-80",
+      "brand": "Dot & Key",
+      "source": "Dot & Key product page (Prerna Saxena; paraphrase)",
+      "stars": null,
+      "text": "Customer describes a cooling feel during humid morning walks without a heavy sensation.",
+      "date": null,
+      "sourceUrl": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "sourceId": "DK-WATER",
+      "textType": "paraphrase; rating/date unavailable"
+    },
+    {
+      "productId": "DK-CICA-80",
+      "brand": "Dot & Key",
+      "source": "Dot & Key product page (Abhishek Rao; paraphrase)",
+      "stars": null,
+      "text": "Customer describes the Cica sunscreen as lightweight for a daily skincare routine.",
+      "date": null,
+      "sourceUrl": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "sourceId": "DK-CICA",
+      "textType": "paraphrase; rating/date unavailable"
+    },
+    {
+      "productId": "DK-CICA-80",
+      "brand": "Dot & Key",
+      "source": "Dot & Key product page (Pooja Nair; paraphrase)",
+      "stars": null,
+      "text": "Customer says the product feels balanced on the skin while providing daily sunscreen protection.",
+      "date": null,
+      "sourceUrl": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "sourceId": "DK-CICA",
+      "textType": "paraphrase; rating/date unavailable"
+    }
+  ],
+  "signals": [
+    {
+      "productId": "DK-VITC-80",
+      "source": "DK-VITC",
+      "metric": "brand_site_review_count",
+      "value": 1833,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/dot-key-vitamin-c-e-spf-50-pa-face-sunscreen-for-glowing-skin-uv-protection-for-dull-skin",
+      "note": "Brand-page review total; not independent sales or buyer count."
+    },
+    {
+      "productId": "DK-VITC-80",
+      "source": "DK-VITC",
+      "metric": "brand_site_badge",
+      "value": "BESTSELLER",
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/dot-key-vitamin-c-e-spf-50-pa-face-sunscreen-for-glowing-skin-uv-protection-for-dull-skin",
+      "note": "Page merchandising label, not a universal market rank."
+    },
+    {
+      "productId": "DK-VITC-80",
+      "source": "DK-VITC",
+      "metric": "brand_site_discount_pct",
+      "value": 15.0,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/dot-key-vitamin-c-e-spf-50-pa-face-sunscreen-for-glowing-skin-uv-protection-for-dull-skin",
+      "note": "Computed from displayed 80g price vs listed MRP; site offer applied."
+    },
+    {
+      "productId": "DK-WATER-80",
+      "source": "DK-WATER",
+      "metric": "brand_site_review_count",
+      "value": 1633,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "note": "Brand-page review total; not independent sales or buyer count."
+    },
+    {
+      "productId": "DK-WATER-80",
+      "source": "DK-WATER",
+      "metric": "brand_site_badge",
+      "value": "BESTSELLER",
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "note": "Page merchandising label, not a universal market rank."
+    },
+    {
+      "productId": "DK-WATER-80",
+      "source": "DK-WATER",
+      "metric": "brand_site_discount_pct",
+      "value": 15.0,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "note": "Computed from displayed 80g price vs listed MRP; site offer applied."
+    },
+    {
+      "productId": "DK-CICA-80",
+      "source": "DK-CICA",
+      "metric": "brand_site_review_count",
+      "value": 1239,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "note": "Brand-page review total; not independent sales or buyer count."
+    },
+    {
+      "productId": "DK-CICA-80",
+      "source": "DK-CICA",
+      "metric": "brand_site_badge",
+      "value": "TRENDING",
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "note": "Page merchandising label, not a universal market rank."
+    },
+    {
+      "productId": "DK-CICA-80",
+      "source": "DK-CICA",
+      "metric": "brand_site_discount_pct",
+      "value": 15.0,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "note": "Computed from displayed 80g price vs listed MRP; site offer applied."
+    },
+    {
+      "productId": "DK-VITC-80",
+      "source": "NYK-VITC",
+      "metric": "nykaa_verified_rating_count",
+      "value": 165841,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "note": "Cached review-page snapshot; may differ from live listing and include variants."
+    },
+    {
+      "productId": "DK-VITC-80",
+      "source": "NYK-VITC",
+      "metric": "nykaa_average_rating",
+      "value": 4.4,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "note": "Cached review-page snapshot."
+    },
+    {
+      "productId": "DK-VITC-80",
+      "source": "NYK-VITC",
+      "metric": "nykaa_50g_discount_pct",
+      "value": 13,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "note": "A distinct 50g variant; not directly comparable to 80g brand-site price."
+    },
+    {
+      "productId": "CMP-AQUAL-50",
+      "source": "NYK-AQUAL",
+      "metric": "nykaa_verified_rating_count",
+      "value": 202032,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/aqualogica-glow-dewy-sunscreen/p/5009759?pps=5&productId=5009759",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-AQUAL-50",
+      "source": "NYK-AQUAL",
+      "metric": "nykaa_average_rating",
+      "value": 4.4,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/aqualogica-glow-dewy-sunscreen/p/5009759?pps=5&productId=5009759",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-AQUAL-50",
+      "source": "NYK-AQUAL",
+      "metric": "nykaa_discount_pct",
+      "value": 12.9,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/aqualogica-glow-dewy-sunscreen/p/5009759?pps=5&productId=5009759",
+      "note": "Calculated from cached listing price and MRP; offer may change."
+    },
+    {
+      "productId": "CMP-MINI-50",
+      "source": "NYK-MINI",
+      "metric": "nykaa_verified_rating_count",
+      "value": 20143,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/minimalist-light-fluid-spf-50-face-sunscreen/p/20540004?productId=20540004&redirectpath=slug&skuId=14573042",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-MINI-50",
+      "source": "NYK-MINI",
+      "metric": "nykaa_average_rating",
+      "value": 4.4,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/minimalist-light-fluid-spf-50-face-sunscreen/p/20540004?productId=20540004&redirectpath=slug&skuId=14573042",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-MINI-50",
+      "source": "NYK-MINI",
+      "metric": "nykaa_discount_pct",
+      "value": 5.0,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/minimalist-light-fluid-spf-50-face-sunscreen/p/20540004?productId=20540004&redirectpath=slug&skuId=14573042",
+      "note": "Calculated from cached listing price and MRP; offer may change."
+    },
+    {
+      "productId": "CMP-DERMA-50",
+      "source": "NYK-DERMA",
+      "metric": "nykaa_verified_rating_count",
+      "value": 189350,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/the-derma-co-1-hyaluronic-sunscreen-aqua-ultra-light-gel-with-spf-50-pa-for-broad-spectrum/p/2777158",
+      "note": "Listing-level; figure from different cached listing snapshots"
+    },
+    {
+      "productId": "CMP-DERMA-50",
+      "source": "NYK-DERMA",
+      "metric": "nykaa_average_rating",
+      "value": 4.4,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/the-derma-co-1-hyaluronic-sunscreen-aqua-ultra-light-gel-with-spf-50-pa-for-broad-spectrum/p/2777158",
+      "note": "Listing-level; figure from different cached listing snapshots"
+    },
+    {
+      "productId": "CMP-DERMA-50",
+      "source": "NYK-DERMA",
+      "metric": "nykaa_discount_pct",
+      "value": 15.0,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/the-derma-co-1-hyaluronic-sunscreen-aqua-ultra-light-gel-with-spf-50-pa-for-broad-spectrum/p/2777158",
+      "note": "Calculated from cached listing price and MRP; offer may change."
+    },
+    {
+      "productId": "CMP-REQUIL-50",
+      "source": "NYK-REQUIL",
+      "metric": "nykaa_verified_rating_count",
+      "value": 63338,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/re-equil-ultra-matte-dry-touch-sunscreen-gel-spf-50/p/8425811?pps=16&productId=8425811",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-REQUIL-50",
+      "source": "NYK-REQUIL",
+      "metric": "nykaa_average_rating",
+      "value": 4.4,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/re-equil-ultra-matte-dry-touch-sunscreen-gel-spf-50/p/8425811?pps=16&productId=8425811",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-REQUIL-50",
+      "source": "NYK-REQUIL",
+      "metric": "nykaa_discount_pct",
+      "value": 9.9,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/re-equil-ultra-matte-dry-touch-sunscreen-gel-spf-50/p/8425811?pps=16&productId=8425811",
+      "note": "Calculated from cached listing price and MRP; offer may change."
+    },
+    {
+      "productId": "CMP-WISH-50",
+      "source": "NYK-WISH",
+      "metric": "nykaa_verified_rating_count",
+      "value": 10361,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/wishcare-vitamin-c-pure-glow-brightening-face-sunscreen/p/28817698?pps=4&productId=28817698",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-WISH-50",
+      "source": "NYK-WISH",
+      "metric": "nykaa_average_rating",
+      "value": 4.3,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/wishcare-vitamin-c-pure-glow-brightening-face-sunscreen/p/28817698?pps=4&productId=28817698",
+      "note": "Listing-level; may combine variants"
+    },
+    {
+      "productId": "CMP-WISH-50",
+      "source": "NYK-WISH",
+      "metric": "nykaa_discount_pct",
+      "value": 21.0,
+      "collectedOn": "2026-11-21",
+      "sourceUrl": "https://www.nykaa.com/wishcare-vitamin-c-pure-glow-brightening-face-sunscreen/p/28817698?pps=4&productId=28817698",
+      "note": "Calculated from cached listing price and MRP; offer may change."
+    }
+  ],
+  "sources": {
+    "DK-VITC": {
+      "url": "https://www.dotandkey.com/products/dot-key-vitamin-c-e-spf-50-pa-face-sunscreen-for-glowing-skin-uv-protection-for-dull-skin",
+      "source": "Dot & Key official brand site"
+    },
+    "DK-WATER": {
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "source": "Dot & Key official brand site"
+    },
+    "DK-CICA": {
+      "url": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "source": "Dot & Key official brand site"
+    },
+    "NYK-VITC": {
+      "url": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+      "source": "Nykaa product/review listing"
+    },
+    "NYK-AQUAL": {
+      "url": "https://www.nykaa.com/aqualogica-glow-dewy-sunscreen/p/5009759?pps=5&productId=5009759",
+      "source": "Nykaa product/review listing"
+    },
+    "NYK-MINI": {
+      "url": "https://www.nykaa.com/minimalist-light-fluid-spf-50-face-sunscreen/p/20540004?productId=20540004&redirectpath=slug&skuId=14573042",
+      "source": "Nykaa product/review listing"
+    },
+    "NYK-DERMA": {
+      "url": "https://www.nykaa.com/the-derma-co-1-hyaluronic-sunscreen-aqua-ultra-light-gel-with-spf-50-pa-for-broad-spectrum/p/2777158",
+      "source": "Nykaa product/review listing"
+    },
+    "NYK-REQUIL": {
+      "url": "https://www.nykaa.com/re-equil-ultra-matte-dry-touch-sunscreen-gel-spf-50/p/8425811?pps=16&productId=8425811",
+      "source": "Nykaa product/review listing"
+    },
+    "NYK-WISH": {
+      "url": "https://www.nykaa.com/wishcare-vitamin-c-pure-glow-brightening-face-sunscreen/p/28817698?pps=4&productId=28817698",
+      "source": "Nykaa product/review listing"
+    }
+  }
+}
