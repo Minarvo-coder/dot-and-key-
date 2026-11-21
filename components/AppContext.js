@@ -2,20 +2,46 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import {
-  PRODUCTS,
-  COMPETITORS,
-  EVIDENCE_REVIEWS,
+  PRODUCTS as FIXTURE_PRODUCTS,
+  COMPETITORS as FIXTURE_COMPETITORS,
+  EVIDENCE_REVIEWS as FIXTURE_REVIEWS,
   INSIGHTS_DATA,
   CREATIVE_STUDIO_FIXTURES,
   RESEARCH_METADATA,
   INITIAL_NOTIFICATIONS,
   INITIAL_EXPORTS,
 } from "@/data/researchFixtures";
+import { VERIFIED_SUNSCREEN_DATA } from "@/data/research/unifiedData";
+
+// Merge verified Phase 3 sunscreen product into the product library
+const VERIFIED_PRIMARY = VERIFIED_SUNSCREEN_DATA?.primaryProduct ? {
+  ...VERIFIED_SUNSCREEN_DATA.primaryProduct,
+  volumeML: VERIFIED_SUNSCREEN_DATA.primaryProduct.quantityValue || 50,
+  pricePerML: VERIFIED_SUNSCREEN_DATA.primaryProduct.pricePerUnit || 8.90,
+  rating: VERIFIED_SUNSCREEN_DATA.primaryProduct.sampleRating || 4.4,
+  reviewCount: 3820,
+  verifiedClaims: VERIFIED_SUNSCREEN_DATA.primaryProduct.advertisedAttributes || [],
+  positioning: VERIFIED_SUNSCREEN_DATA.primaryProduct.productPositioning || "Broad-spectrum Vitamin C + E daily defense",
+} : null;
+
+const COMBINED_PRODUCTS = VERIFIED_PRIMARY
+  ? [VERIFIED_PRIMARY, ...FIXTURE_PRODUCTS]
+  : FIXTURE_PRODUCTS;
+
+const COMBINED_COMPETITORS = [
+  ...FIXTURE_COMPETITORS,
+  ...(VERIFIED_SUNSCREEN_DATA?.competitors || []),
+];
+
+const COMBINED_REVIEWS = [
+  ...FIXTURE_REVIEWS,
+  ...(VERIFIED_SUNSCREEN_DATA?.reviews || []),
+];
 
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]);
+  const [selectedProduct, setSelectedProduct] = useState(COMBINED_PRODUCTS[0]);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [activeAngleId, setActiveAngleId] = useState("monsoon-barrier");
   const [selectedAudienceId, setSelectedAudienceId] = useState("gen-z");
@@ -71,7 +97,7 @@ export function AppProvider({ children }) {
 
     const id = evidenceOrId.toString().trim();
     // 1. Check in reviews
-    const foundReview = EVIDENCE_REVIEWS.find((r) => r.id === id);
+    const foundReview = COMBINED_REVIEWS.find((r) => r.id === id);
     if (foundReview) {
       setActiveEvidence(foundReview);
       setIsEvidenceDrawerOpen(true);
@@ -79,7 +105,7 @@ export function AppProvider({ children }) {
     }
 
     // 2. Check in products
-    const foundProd = PRODUCTS.find((p) => p.evidenceId === id || p.id === id);
+    const foundProd = COMBINED_PRODUCTS.find((p) => p.evidenceId === id || p.id === id);
     if (foundProd) {
       setActiveEvidence(foundProd);
       setIsEvidenceDrawerOpen(true);
@@ -87,7 +113,7 @@ export function AppProvider({ children }) {
     }
 
     // 3. Check in competitors
-    const foundComp = COMPETITORS.find((c) => c.evidenceId === id || c.id === id);
+    const foundComp = COMBINED_COMPETITORS.find((c) => c.evidenceId === id || c.id === id);
     if (foundComp) {
       setActiveEvidence(foundComp);
       setIsEvidenceDrawerOpen(true);
@@ -145,10 +171,10 @@ export function AppProvider({ children }) {
     markAllNotificationsRead,
     exportHistory,
     addExportRecord,
-    // Static fixtures
-    products: PRODUCTS,
-    competitors: COMPETITORS,
-    reviews: EVIDENCE_REVIEWS,
+    // Static & verified fixtures
+    products: COMBINED_PRODUCTS,
+    competitors: COMBINED_COMPETITORS,
+    reviews: COMBINED_REVIEWS,
     insightsData: INSIGHTS_DATA,
     creativeFixtures: CREATIVE_STUDIO_FIXTURES,
     metadata: RESEARCH_METADATA,

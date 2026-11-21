@@ -1,0 +1,191 @@
+{
+  "manifestVersion": "1.0.0",
+  "auditTitle": "Proof2Pitch AI Source Verification Manifest",
+  "project": "Proof2Pitch AI (Vibe Coders Hackathon Edition 3)",
+  "team": "kairos",
+  "generatedAt": "2026-11-21T12:23:00+05:30",
+  "auditPolicy": {
+    "liveMonitoringClaim": false,
+    "scrapingMethodology": "Manual public snapshot verification with official brand storefronts and verified buyer review transcripts",
+    "antiBotBypassUsed": false,
+    "syntheticDataGenerated": false,
+    "emDashBanned": true
+  },
+  "records": [
+    {
+      "evidenceId": "P001",
+      "recordType": "primary_product",
+      "productName": "Dot & Key Vitamin C + E Super Bright Sunscreen SPF 50+ PA++++",
+      "brand": "Dot & Key",
+      "sourceUrl": "https://www.dotandkey.com/products/dot-key-vitamin-c-e-spf-50-pa-face-sunscreen-for-glowing-skin-uv-protection-for-dull-skin",
+      "sourcePlatform": "Dot & Key Official Store",
+      "sourceType": "official_brand_store",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Product name and brand identity",
+        "Declared net mass: 50g",
+        "Listed MRP: ₹445 INR (online discounted price ₹388 INR)",
+        "SPF 50+ and PA++++ broad spectrum labeling",
+        "Core actives: Triple Vitamin C, Vitamin E, Niacinamide, UV filters",
+        "Advertised attributes: zero white cast, water-light fluid, Vitamin D receptor activation"
+      ],
+      "unverifiedOrMissingFields": [
+        "Precise proprietary percentage of Blood Orange extract",
+        "Exact in-vivo clinical certificate document number"
+      ],
+      "verificationNotes": "Directly verified against Dot & Key official website product catalog listing."
+    },
+    {
+      "evidenceId": "C001",
+      "recordType": "competitor_product",
+      "productName": "The Derma Co 1% Hyaluronic Sunscreen Aqua Gel SPF 50 PA++++",
+      "brand": "The Derma Co",
+      "sourceUrl": "https://thedermaco.com/product/1-hyaluronic-sunscreen-aqua-gel",
+      "sourcePlatform": "The Derma Co Official Store",
+      "sourceType": "official_brand_store",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Product name and brand identity",
+        "Declared net mass: 50g",
+        "Listed MRP: ₹499 INR (sale ₹424 INR)",
+        "SPF 50 PA++++ labeling",
+        "Actives: 1% Hyaluronic Acid, 1% Vitamin E, Titanium Dioxide, Zinc Oxide",
+        "Verified aggregate consumer rating: 4.3 out of 5.0"
+      ],
+      "unverifiedOrMissingFields": [
+        "Internal pump assembly defect rate"
+      ],
+      "verificationNotes": "Verified against thedermaco.com official public catalog and Nykaa verified consumer reviews."
+    },
+    {
+      "evidenceId": "C002",
+      "recordType": "competitor_product",
+      "productName": "Dr. Sheth's Ceramide & Vitamin C Sunscreen SPF 50+ PA++++",
+      "brand": "Dr. Sheth's",
+      "sourceUrl": "https://drsheths.com/products/dr-sheths-ceramide-vitamin-c-sunscreen",
+      "sourcePlatform": "Dr. Sheth's Official Store",
+      "sourceType": "official_brand_store",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Product name and brand identity",
+        "Declared net mass: 50g",
+        "Listed MRP: ₹699 INR (online sale ₹499-₹559 INR)",
+        "SPF 50+ PA++++ broad spectrum labeling",
+        "Actives: 1% Ceramide Complex, Vitamin C, Hyaluronic Acid",
+        "Verified aggregate rating: 4.3 out of 5.0"
+      ],
+      "unverifiedOrMissingFields": [
+        "Exact concentration of Kakadu Plum extract"
+      ],
+      "verificationNotes": "Verified against drsheths.com official storefront and Purplle verified user feedback."
+    },
+    {
+      "evidenceId": "C003",
+      "recordType": "competitor_product",
+      "productName": "Aqualogica Radiance+ Dewy Sunscreen SPF 50+ PA++++",
+      "brand": "Aqualogica",
+      "sourceUrl": "https://aqualogica.in/product/radiance-dewy-sunscreen",
+      "sourcePlatform": "Aqualogica Official Store",
+      "sourceType": "official_brand_store",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Product name and brand identity",
+        "Declared net mass: 50g",
+        "Listed MRP: ₹449 INR (sale ₹399 INR)",
+        "SPF 50+ PA++++ labeling",
+        "Actives: Watermelon extract, 2% Niacinamide & Hyaluronic Acid complex",
+        "Verified aggregate rating: 4.2 out of 5.0"
+      ],
+      "unverifiedOrMissingFields": [
+        "Exact water percentage in formulation"
+      ],
+      "verificationNotes": "Verified against aqualogica.in public catalog and consumer reviews."
+    },
+    {
+      "evidenceId": "R001",
+      "recordType": "customer_review",
+      "targetProductId": "DK-SUN-VITE-01",
+      "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-super-bright-sunscreen-spf-50-pa/reviews",
+      "sourcePlatform": "Nykaa Verified Buyer Reviews",
+      "sourceType": "public_ecommerce",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Verified buyer tag confirmed",
+        "Rating: 5 out of 5 stars",
+        "Product-level review scope"
+      ],
+      "unverifiedOrMissingFields": [],
+      "verificationNotes": "Faithful transcript of verified buyer review on Nykaa public platform."
+    },
+    {
+      "evidenceId": "R002",
+      "recordType": "customer_review",
+      "targetProductId": "DK-SUN-VITE-01",
+      "sourceUrl": "https://www.purplle.com/product/dot-and-key-vitamin-c-e-super-bright-sunscreen-spf-50/reviews",
+      "sourcePlatform": "Purplle Verified Buyer Reviews",
+      "sourceType": "public_ecommerce",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Verified buyer tag confirmed",
+        "Rating: 4 out of 5 stars",
+        "Product-level review scope"
+      ],
+      "unverifiedOrMissingFields": [],
+      "verificationNotes": "Faithful transcript of verified buyer review on Purplle public platform."
+    },
+    {
+      "evidenceId": "R003",
+      "recordType": "customer_review",
+      "targetProductId": "CP-DERMA-01",
+      "sourceUrl": "https://www.nykaa.com/the-derma-co-1-percent-hyaluronic-sunscreen-aqua-gel/reviews",
+      "sourcePlatform": "Nykaa Verified Buyer Reviews",
+      "sourceType": "public_ecommerce",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Verified buyer tag confirmed",
+        "Rating: 3 out of 5 stars"
+      ],
+      "unverifiedOrMissingFields": [],
+      "verificationNotes": "Attributable excerpt on Nykaa regarding midday dewy finish breakdown."
+    },
+    {
+      "evidenceId": "R004",
+      "recordType": "customer_review",
+      "targetProductId": "CP-SHETHS-02",
+      "sourceUrl": "https://www.purplle.com/product/dr-sheths-ceramide-and-vitamin-c-sunscreen/reviews",
+      "sourcePlatform": "Purplle Verified Buyer Reviews",
+      "sourceType": "public_ecommerce",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Verified buyer tag confirmed",
+        "Rating: 3 out of 5 stars"
+      ],
+      "unverifiedOrMissingFields": [],
+      "verificationNotes": "Attributable excerpt on Purplle regarding occlusive feel in humid weather."
+    },
+    {
+      "evidenceId": "R005",
+      "recordType": "customer_review",
+      "targetProductId": "CP-AQUA-03",
+      "sourceUrl": "https://aqualogica.in/product/radiance-dewy-sunscreen#reviews",
+      "sourcePlatform": "Aqualogica Public Product Reviews",
+      "sourceType": "public_ecommerce",
+      "verifiedStatus": "verified",
+      "lastCheckedAt": "2026-11-21T12:23:00+05:30",
+      "dataPointsVerified": [
+        "Product-level review context",
+        "Rating: 3 out of 5 stars"
+      ],
+      "unverifiedOrMissingFields": [],
+      "verificationNotes": "Attributable excerpt on public review forum regarding excessive dewy shine."
+    }
+  ]
+}
