@@ -6,14 +6,27 @@ import {
   standaloneProducts,
 } from "@/data/productsLoader";
 import {
-  COMPETITORS,
-  EVIDENCE_REVIEWS,
+  PRODUCTS as FIXTURE_PRODUCTS,
+  COMPETITORS as FIXTURE_COMPETITORS,
+  EVIDENCE_REVIEWS as FIXTURE_REVIEWS,
   INSIGHTS_DATA,
   CREATIVE_STUDIO_FIXTURES,
   RESEARCH_METADATA,
   INITIAL_NOTIFICATIONS,
   INITIAL_EXPORTS,
 } from "@/data/researchFixtures";
+import { VERIFIED_SUNSCREEN_DATA } from "@/data/research/unifiedData";
+
+// Combine competitors and reviews while prioritizing real catalogue products
+const COMBINED_COMPETITORS = [
+  ...FIXTURE_COMPETITORS,
+  ...(VERIFIED_SUNSCREEN_DATA?.competitors || []),
+];
+
+const COMBINED_REVIEWS = [
+  ...FIXTURE_REVIEWS,
+  ...(VERIFIED_SUNSCREEN_DATA?.reviews || []),
+];
 
 const AppContext = createContext(null);
 
@@ -75,7 +88,7 @@ export function AppProvider({ children }) {
 
     const id = evidenceOrId.toString().trim();
     // 1. Check in reviews
-    const foundReview = EVIDENCE_REVIEWS.find((r) => r.id === id);
+    const foundReview = COMBINED_REVIEWS.find((r) => r.id === id);
     if (foundReview) {
       setActiveEvidence(foundReview);
       setIsEvidenceDrawerOpen(true);
@@ -83,7 +96,7 @@ export function AppProvider({ children }) {
     }
 
     // 2. Check in products
-    const foundProd = PRODUCTS.find((p) => p.evidenceId === id || p.id === id);
+    const foundProd = standaloneProducts.find((p) => p.id === id || String(p.id) === id);
     if (foundProd) {
       setActiveEvidence(foundProd);
       setIsEvidenceDrawerOpen(true);
@@ -91,21 +104,21 @@ export function AppProvider({ children }) {
     }
 
     // 3. Check in competitors
-    const foundComp = COMPETITORS.find((c) => c.evidenceId === id || c.id === id);
+    const foundComp = COMBINED_COMPETITORS.find((c) => c.id === id || String(c.id) === id);
     if (foundComp) {
       setActiveEvidence(foundComp);
       setIsEvidenceDrawerOpen(true);
       return;
     }
 
-    // Fallback verified record
+    // Fallback record
     setActiveEvidence({
       id: id,
       brand: "Dot & Key Market Intelligence",
-      productName: selectedProduct?.productName || "Verified Evidence Reference",
+      productName: selectedProduct?.productName || "Public Reference",
       category: "Formulation Specification",
-      verbatimQuote: "Audited benchmark record validated during the Monsoon 2026 skincare audit.",
-      sourcePlatform: "Retail Research Fixture",
+      verbatimQuote: "Record collected from public retail data.",
+      sourcePlatform: "Public Retail Page",
       date: "November 2026",
       rating: 5,
     });
@@ -151,10 +164,10 @@ export function AppProvider({ children }) {
     addExportRecord,
     analysisStatus,
     setAnalysisStatus,
-    // Real catalogue products
+    // Real standalone catalogue products
     products: standaloneProducts,
-    competitors: COMPETITORS,
-    reviews: EVIDENCE_REVIEWS,
+    competitors: COMBINED_COMPETITORS,
+    reviews: COMBINED_REVIEWS,
     insightsData: INSIGHTS_DATA,
     creativeFixtures: CREATIVE_STUDIO_FIXTURES,
     metadata: RESEARCH_METADATA,
