@@ -62,13 +62,18 @@ export default function Sidebar() {
   }
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-app-card border-r border-line-subtle transition-all duration-200">
+    <div className="flex flex-col h-full bg-app-card border-r border-line-subtle transition-all duration-200 relative">
       {/* Brand Header */}
-      <div className="flex items-center justify-between h-16 px-4 border-b border-line-subtle shrink-0">
+      <div
+        className={`flex items-center h-16 border-b border-line-subtle shrink-0 relative transition-all ${
+          isSidebarCollapsed ? "justify-center px-2" : "justify-between px-4"
+        }`}
+      >
         <Link
           href="/overview"
-          className="flex items-center gap-3 overflow-hidden"
+          className="flex items-center gap-3 shrink-0"
           onClick={() => setIsMobileSidebarOpen(false)}
+          title="KAIROS Dot & Key Studio"
         >
           <div className="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center text-ink-inverted font-serif font-bold text-lg shadow-clay-sm shrink-0">
             K
@@ -100,15 +105,20 @@ export default function Sidebar() {
           <X className="w-5 h-5" />
         </button>
 
-        {/* Desktop Collapse Toggle */}
+        {/* Desktop Collapse / Expand Toggle */}
         <button
           type="button"
           onClick={toggleSidebar}
-          className="hidden md:flex items-center justify-center w-7 h-7 rounded-lg text-ink-muted hover:text-ink-primary hover:bg-app-subtle transition-colors border border-line-subtle/50"
+          className={`hidden md:flex items-center justify-center rounded-lg text-ink-muted hover:text-ink-primary hover:bg-app-subtle transition-all border border-line-subtle shadow-sm ${
+            isSidebarCollapsed
+              ? "absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-app-card hover:border-terracotta hover:text-terracotta z-40"
+              : "w-7 h-7"
+          }`}
           title={isSidebarCollapsed ? "Expand sidebar (256px)" : "Collapse sidebar (72px)"}
+          aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {isSidebarCollapsed ? (
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4 text-terracotta" />
           ) : (
             <ChevronLeft className="w-4 h-4" />
           )}
