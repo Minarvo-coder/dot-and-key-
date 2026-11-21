@@ -107,7 +107,7 @@ export function getDeterministicAnswer(question: string, productId: string = "DK
 
   // 2. Content Chip: "Show the SWOT"
   if (norm.includes("swot") || norm.includes("strength") || norm.includes("weakness")) {
-    const topCompetitor = competitors[0]; // Aqualogica or Derma Co
+    const topCompetitor = facts.competitors[0]; // Aqualogica or Derma Co
     const ppg = facts.product.pricePerGram ? `Rs ${facts.product.pricePerGram}/g` : `Rs ${product.price} for ${product.size}`;
 
     return {
