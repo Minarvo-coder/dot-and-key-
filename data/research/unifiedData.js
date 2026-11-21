@@ -1,21 +1,21 @@
 /**
  * Unified Data Loader
  * Proof2Pitch AI / KAIROS (Vibe Coders Hackathon Edition 3)
- * 
+ *
  * Bridges Phase 3 verified market research datasets with
  * Phase 2 sample demonstration fixtures.
  */
 
-import verifiedData from "./verifiedSunscreenData.json";
-import manifestData from "./manifest.json";
+import {
+  VERIFIED_SUNSCREEN_OBJECT as verifiedData,
+  VERIFIED_MANIFEST_OBJECT as manifestData,
+} from "./verifiedSunscreenRecord.js";
 import {
   PRODUCTS as PHASE2_PRODUCTS,
   COMPETITORS as PHASE2_COMPETITORS,
   EVIDENCE_REVIEWS as PHASE2_REVIEWS,
-  INSIGHTS_BY_PRODUCT,
-  CREATIVE_BY_PRODUCT,
   RESEARCH_METADATA as PHASE2_METADATA,
-} from "../researchFixtures";
+} from "../researchFixtures.js";
 
 export const VERIFIED_SUNSCREEN_DATA = verifiedData;
 export const VERIFIED_MANIFEST = manifestData;
@@ -32,7 +32,6 @@ export function getVerifiedSunscreenDataset() {
     primaryProduct: verifiedData.primaryProduct,
     allProducts: [
       verifiedData.primaryProduct,
-      // include existing Phase 2 products as selectable secondary options
       ...PHASE2_PRODUCTS,
     ],
     competitors: verifiedData.competitors,
@@ -68,7 +67,8 @@ export function getEmptyTestDataset() {
       datasetName: "Empty Research Sandbox",
       status: "Empty Sandbox State",
       collectionTimestamp: new Date().toISOString(),
-      provenanceStatement: "Zero-state test fixture verifying that UI elements render explicit empty states without runtime exceptions.",
+      provenanceStatement:
+        "Zero-state test fixture verifying that UI elements render explicit empty states without runtime exceptions.",
     },
     primaryProduct: null,
     allProducts: [],

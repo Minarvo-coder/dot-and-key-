@@ -98,3 +98,16 @@ npm run build
 - **Strict Evidence Guarantee**: Proof2Pitch AI refuses to fabricate synthetic review quotes or clinical claims.
 - **Empty State Integrity**: When a newly selected product has no compiled SWOT or creative assets, the system displays an honest empty state with a link to compiled fixtures.
 - **Ready for Phase 4**: The verified Dot & Key Vitamin C + E Sunscreen dataset (`P001`, `C001-C003`, `R001-R005`) is cleanly structured and ready for Phase 4 AI sentiment clustering and opportunity angle generation.
+
+---
+
+## 6. KAIROS Copilot: Context-Aware Market Intelligence Assistant
+
+KAIROS Copilot is mounted persistently in `components/AppShell.js` (`components/KairosCopilot.js`) and communicates with the secure server endpoint `POST /api/assistant` (`app/api/assistant/route.js`).
+
+### Key Capabilities
+- **Context-Aware Grounding**: Automatically receives the active product ID, current workspace route, selected marketing angle, and target audience, then retrieves trusted product, competitor, review, SWOT, and opportunity records on the server via `data/research/copilotContext.js`.
+- **FACTS / INFERENCES / RECOMMENDATIONS Separation**: Every analytical response clearly separates verifiable dataset facts (with clickable `[EVIDENCE-ID]` badges), analytical interpretations, and suggested next actions.
+- **Evidence Allowlist Verification**: All bracketed citations are verified against `getTrustedEvidenceMap()`. Unrecognized or fabricated IDs are automatically stripped.
+- **Allowlisted Workspace Navigation**: Suggests safe navigation shortcuts strictly validated against `ALLOWED_NAVIGATION_ROUTES` (`/overview`, `/products`, `/competitors`, `/reviews`, `/opportunities`, `/swot`, `/marketing-studio`, `/brand-voice`, `/exports`).
+- **Server-Side AI Provider Configuration**: Supports `GEMINI_API_KEY`, `OPENAI_API_KEY`, or `GROQ_API_KEY` via `.env.local` (see `.env.example`), and falls back cleanly to the deterministic **KAIROS Grounded Intelligence Engine** when no external key is configured. Provider errors or timeouts return explicit HTTP `502`/`503`/`504` responses with retry support and never silently substitute unverified answers.

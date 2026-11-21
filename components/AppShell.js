@@ -6,6 +6,7 @@ import TopNav from "@/components/TopNav";
 import EvidenceDrawer from "@/components/EvidenceDrawer";
 import HelpModal from "@/components/HelpModal";
 import SettingsModal from "@/components/SettingsModal";
+import KairosCopilot from "@/components/KairosCopilot";
 import { useApp } from "@/components/AppContext";
 
 export default function AppShell({ children }) {
@@ -49,6 +50,7 @@ export default function AppShell({ children }) {
       <EvidenceDrawer />
       <HelpModal />
       <SettingsModal />
+      <KairosCopilot />
     </div>
   );
 }
