@@ -1,0 +1,93 @@
+[
+  {
+    "productId": "CMP-AQUAL-50",
+    "name": "Aqualogica Glow+ Dewy Sunscreen Gel SPF 50+ PA++++ (50g)",
+    "price": 391,
+    "rating": 4.4,
+    "ratingCount": 202032,
+    "claims": [
+      "dewy gel finish",
+      "papaya and Vitamin C",
+      "SPF 50+ PA++++"
+    ],
+    "url": "https://www.nykaa.com/aqualogica-glow-dewy-sunscreen/p/5009759?pps=5&productId=5009759",
+    "comparesToProductId": "DK-VITC-80",
+    "size": "50g",
+    "mrp": 449,
+    "sourceId": "NYK-AQUAL",
+    "ratingCountScope": "Listing-level; may combine variants"
+  },
+  {
+    "productId": "CMP-MINI-50",
+    "name": "Minimalist Light Fluid SPF 50 Face Sunscreen (50ml)",
+    "price": 474,
+    "rating": 4.4,
+    "ratingCount": 20143,
+    "claims": [
+      "light fluid",
+      "everyday sun protection",
+      "SPF 50"
+    ],
+    "url": "https://www.nykaa.com/minimalist-light-fluid-spf-50-face-sunscreen/p/20540004?productId=20540004&redirectpath=slug&skuId=14573042",
+    "comparesToProductId": "DK-VITC-80",
+    "size": "50ml",
+    "mrp": 499,
+    "sourceId": "NYK-MINI",
+    "ratingCountScope": "Listing-level; may combine variants"
+  },
+  {
+    "productId": "CMP-DERMA-50",
+    "name": "The Derma Co 1% Hyaluronic Sunscreen Aqua Gel (50g)",
+    "price": 424,
+    "rating": 4.4,
+    "ratingCount": 189350,
+    "claims": [
+      "hyaluronic acid",
+      "aqua gel",
+      "SPF 50"
+    ],
+    "url": "https://www.nykaa.com/the-derma-co-1-hyaluronic-sunscreen-aqua-ultra-light-gel-with-spf-50-pa-for-broad-spectrum/p/2777158",
+    "comparesToProductId": "DK-VITC-80",
+    "size": "50g",
+    "mrp": 499,
+    "sourceId": "NYK-DERMA",
+    "ratingCountScope": "Listing-level; figure from different cached listing snapshots"
+  },
+  {
+    "productId": "CMP-REQUIL-50",
+    "name": "Re'equil Ultra Matte Dry Touch Sunscreen SPF 50 PA++++ (50g)",
+    "price": 581,
+    "rating": 4.4,
+    "ratingCount": 63338,
+    "claims": [
+      "ultra-matte finish",
+      "dry-touch gel",
+      "SPF 50 PA++++"
+    ],
+    "url": "https://www.nykaa.com/re-equil-ultra-matte-dry-touch-sunscreen-gel-spf-50/p/8425811?pps=16&productId=8425811",
+    "comparesToProductId": "DK-VITC-80",
+    "size": "50g",
+    "mrp": 645,
+    "sourceId": "NYK-REQUIL",
+    "ratingCountScope": "Listing-level; may combine variants"
+  },
+  {
+    "productId": "CMP-WISH-50",
+    "name": "WishCare Vitamin C Pure Glow Brightening Face Sunscreen (50ml)",
+    "price": 394,
+    "rating": 4.3,
+    "ratingCount": 10361,
+    "claims": [
+      "Vitamin C",
+      "kojic acid",
+      "licorice",
+      "SPF 50 PA++++"
+    ],
+    "url": "https://www.nykaa.com/wishcare-vitamin-c-pure-glow-brightening-face-sunscreen/p/28817698?pps=4&productId=28817698",
+    "comparesToProductId": "DK-VITC-80",
+    "size": "50ml",
+    "mrp": 499,
+    "sourceId": "NYK-WISH",
+    "ratingCountScope": "Listing-level; may combine variants"
+  }
+]

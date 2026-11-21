@@ -314,12 +314,12 @@ export default function OverviewPage() {
             }`}
           >
             {dataStats.reviews.sentiment
-              ? `${dataStats.reviews.sentiment.positivePercent}% Positive`
+              ? `${dataStats.reviews.sentiment.pos} of ${dataStats.reviews.sentiment.total} Positive`
               : "No data yet"}
           </div>
           <div className="text-sm text-ink-muted">
             {dataStats.reviews.sentiment
-              ? `${dataStats.reviews.sentiment.neutralPercent}% Neutral • ${dataStats.reviews.sentiment.criticalPercent}% Critical`
+              ? `${dataStats.reviews.sentiment.neu} Neutral • ${dataStats.reviews.sentiment.crit} Critical`
               : "Awaiting review data"}
           </div>
         </div>

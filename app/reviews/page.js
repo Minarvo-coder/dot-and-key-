@@ -97,7 +97,7 @@ export default function ReviewInsightsPage() {
                 {metadata.datasetName}
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-status-success-bg text-status-success font-semibold border border-sage/30">
-                100% Verified Buyers
+                Public Customer Reviews
               </span>
             </div>
             <p className="text-xs text-ink-muted leading-relaxed max-w-2xl">

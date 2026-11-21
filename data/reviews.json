@@ -1,0 +1,90 @@
+[
+  {
+    "productId": "DK-VITC-80",
+    "brand": "Dot & Key",
+    "source": "Nykaa (verified buyer, 26 May 2025; paraphrase)",
+    "stars": 5,
+    "text": "Reviewer associates the sunscreen with a glowing-looking finish and considers it affordable.",
+    "date": "2025-05-26",
+    "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+    "sourceId": "NYK-VITC",
+    "textType": "paraphrase"
+  },
+  {
+    "productId": "DK-VITC-80",
+    "brand": "Dot & Key",
+    "source": "Nykaa (verified buyer, 20 Aug 2024; paraphrase)",
+    "stars": 5,
+    "text": "Reviewer describes a thin, milky texture with a mild fragrance and a finish that does not feel overly oily.",
+    "date": "2024-08-20",
+    "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+    "sourceId": "NYK-VITC",
+    "textType": "paraphrase"
+  },
+  {
+    "productId": "DK-VITC-80",
+    "brand": "Dot & Key",
+    "source": "Nykaa (verified buyer, 6 Jun 2023; paraphrase)",
+    "stars": 5,
+    "text": "Reviewer describes a water-light gel texture, complete absorption and no noticeable white cast.",
+    "date": "2023-06-06",
+    "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+    "sourceId": "NYK-VITC",
+    "textType": "paraphrase"
+  },
+  {
+    "productId": "DK-VITC-80",
+    "brand": "Dot & Key",
+    "source": "Nykaa (verified buyer, 12 Feb 2023; paraphrase)",
+    "stars": 5,
+    "text": "Reviewer highlights non-sticky application, easy blending and a favorable promotional deal.",
+    "date": "2023-02-12",
+    "sourceUrl": "https://www.nykaa.com/dot-key-vitamin-c-e-face-sunscreen-with-spf-50-pa/reviews/13199519",
+    "sourceId": "NYK-VITC",
+    "textType": "paraphrase"
+  },
+  {
+    "productId": "DK-WATER-80",
+    "brand": "Dot & Key",
+    "source": "Dot & Key product page (Juhi Mathur; paraphrase)",
+    "stars": null,
+    "text": "Customer with oily skin says the sunscreen feels light and keeps the face looking fresh rather than oily.",
+    "date": null,
+    "sourceUrl": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+    "sourceId": "DK-WATER",
+    "textType": "paraphrase; rating/date unavailable"
+  },
+  {
+    "productId": "DK-WATER-80",
+    "brand": "Dot & Key",
+    "source": "Dot & Key product page (Prerna Saxena; paraphrase)",
+    "stars": null,
+    "text": "Customer describes a cooling feel during humid morning walks without a heavy sensation.",
+    "date": null,
+    "sourceUrl": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+    "sourceId": "DK-WATER",
+    "textType": "paraphrase; rating/date unavailable"
+  },
+  {
+    "productId": "DK-CICA-80",
+    "brand": "Dot & Key",
+    "source": "Dot & Key product page (Abhishek Rao; paraphrase)",
+    "stars": null,
+    "text": "Customer describes the Cica sunscreen as lightweight for a daily skincare routine.",
+    "date": null,
+    "sourceUrl": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+    "sourceId": "DK-CICA",
+    "textType": "paraphrase; rating/date unavailable"
+  },
+  {
+    "productId": "DK-CICA-80",
+    "brand": "Dot & Key",
+    "source": "Dot & Key product page (Pooja Nair; paraphrase)",
+    "stars": null,
+    "text": "Customer says the product feels balanced on the skin while providing daily sunscreen protection.",
+    "date": null,
+    "sourceUrl": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+    "sourceId": "DK-CICA",
+    "textType": "paraphrase; rating/date unavailable"
+  }
+]
