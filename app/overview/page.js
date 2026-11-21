@@ -187,21 +187,44 @@ export default function OverviewPage() {
       {/* 1. Welcome Hero Section */}
       <div className="p-6 sm:p-8 rounded-3xl bg-app-card border border-line-subtle shadow-clay-sm relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-sand/20 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light border border-line-subtle text-xs font-mono font-medium text-ink-primary">
-              <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
-              <span>Dot & Key Intelligence</span>
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 max-w-2xl flex-1">
+            {/* Real Hero Product Image */}
+            {selectedProduct?.image && (
+              <div className="shrink-0 flex flex-col items-center p-3 rounded-2xl bg-app-subtle border border-line-subtle shadow-clay-sm text-center w-36 sm:w-40">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 relative rounded-xl overflow-hidden bg-white/70 flex items-center justify-center p-1">
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.productName || selectedProduct.title || "Dot & Key Hero Product"}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="mt-2.5 w-full">
+                  <p className="text-xs font-semibold text-ink-primary line-clamp-2 leading-tight" title={selectedProduct.productName}>
+                    {selectedProduct.productName}
+                  </p>
+                  <p className="text-xs font-bold text-terracotta mt-1">
+                    ₹{selectedProduct.retailPriceINR}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-3 flex-1 min-w-0">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light border border-line-subtle text-xs font-mono font-medium text-ink-primary">
+                <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
+                <span>Dot & Key Intelligence</span>
+              </div>
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-ink-primary tracking-tight leading-tight">
+                Pick a product. See what the market says. Get ready-to-use ads.
+              </h1>
+              <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                Turn customer reviews and competitor data into ready-to-use marketing copy for Dot & Key.
+              </p>
+              <p className="text-[11px] font-mono text-ink-muted">
+                Data collected from public pages (dotandkey.com, Nykaa, Amazon) on 21 Nov 2026
+              </p>
             </div>
-            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-ink-primary tracking-tight leading-tight">
-              Pick a product. See what the market says. Get ready-to-use ads.
-            </h1>
-            <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-              Turn customer reviews and competitor data into ready-to-use marketing copy for Dot & Key.
-            </p>
-            <p className="text-[11px] font-mono text-ink-muted">
-              Data collected from public pages (dotandkey.com, Nykaa, Amazon) on 21 Nov 2026
-            </p>
           </div>
 
           {/* Action Buttons */}
