@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppContext";
 import EvidenceBadge from "@/components/EvidenceBadge";
 import { getCatalogueStats } from "@/data/productsLoader";
@@ -20,9 +21,13 @@ import {
   AlertTriangle,
   FileText,
   BarChart2,
+  Loader2,
 } from "lucide-react";
 
 export default function OverviewPage() {
+  const router = useRouter();
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+
   const {
     selectedProduct,
     products,
@@ -32,6 +37,34 @@ export default function OverviewPage() {
     metadata,
     openEvidence,
   } = useApp();
+
+  async function handleAnalyse() {
+    setIsAnalyzing(true);
+    try {
+      const res = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productId: selectedProduct?.id,
+          productTitle: selectedProduct?.title || selectedProduct?.productName,
+        }),
+      }).catch(() => null);
+
+      if (res && res.ok) {
+        const data = await res.json().catch(() => null);
+        if (data?.redirectUrl) {
+          router.push(data.redirectUrl);
+          return;
+        }
+      }
+    } catch (e) {
+      // Endpoint not ready
+    }
+    // "If the agent endpoint is not ready, navigate to Review Insights and do not fake a result."
+    setTimeout(() => {
+      router.push("/reviews");
+    }, 600);
+  }
 
   const [dataStats, setDataStats] = useState({
     catalogue: getCatalogueStats(),
@@ -164,22 +197,33 @@ export default function OverviewPage() {
             </p>
           </div>
 
-          {/* Quick CTA to Studio */}
+          {/* Action Buttons */}
           <div className="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-3">
-            <Link
-              href="/marketing-studio"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-terracotta text-ink-inverted text-xs sm:text-sm font-semibold hover:bg-terracotta-hover transition-all shadow-clay-sm"
+            <button
+              type="button"
+              onClick={handleAnalyse}
+              disabled={isAnalyzing}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-terracotta text-ink-inverted text-xs sm:text-sm font-semibold hover:bg-terracotta-hover disabled:opacity-75 disabled:cursor-not-allowed transition-all shadow-clay-sm"
             >
-              <PenTool className="w-4 h-4" />
-              <span>Launch Marketing Studio</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+              {isAnalyzing ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Reading reviews...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4" />
+                  <span>Analyse this product</span>
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </button>
             <Link
               href="/products"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-app-subtle border border-line-subtle text-ink-primary text-xs sm:text-sm font-semibold hover:bg-app-card transition-all"
             >
               <Layers className="w-4 h-4 text-ink-muted" />
-              <span>Browse Product Library</span>
+              <span>Browse products</span>
             </Link>
           </div>
         </div>
