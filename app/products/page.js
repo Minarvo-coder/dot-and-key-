@@ -3,19 +3,17 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { useApp } from "@/components/AppContext";
-import EvidenceBadge from "@/components/EvidenceBadge";
 import {
   Search,
-  Filter,
   CheckCircle,
   ExternalLink,
   Star,
   Layers,
   ArrowRight,
   ShieldCheck,
-  Sparkles,
   PackageCheck,
   RotateCcw,
+  Sparkles,
 } from "lucide-react";
 
 export default function ProductLibraryPage() {
@@ -33,26 +31,30 @@ export default function ProductLibraryPage() {
 
   const categories = [
     { id: "all", label: "All Formulations" },
-    { id: "moisturizer", label: "Moisturizers & Gels" },
     { id: "sunscreen", label: "Sunscreens" },
-    { id: "treatment", label: "Night & Blemish" },
-    { id: "serum", label: "Serums & Peptides" },
+    { id: "moisturizer", label: "Moisturizers & Gels" },
+    { id: "cleanser", label: "Cleansers & Washes" },
+    { id: "treatment", label: "Masks & Treatments" },
+    { id: "lipcare", label: "Lip Care" },
   ];
 
   const filteredProducts = useMemo(() => {
     return products
       .filter((p) => {
+        const cat = (p.category || "").toLowerCase();
+
         // Category filter
-        if (selectedCategory === "moisturizer" && !p.category.toLowerCase().includes("moisturizer")) return false;
-        if (selectedCategory === "sunscreen" && !p.category.toLowerCase().includes("sunscreen")) return false;
-        if (selectedCategory === "treatment" && !p.category.toLowerCase().includes("night") && !p.category.toLowerCase().includes("blemish")) return false;
-        if (selectedCategory === "serum" && !p.category.toLowerCase().includes("serum")) return false;
+        if (selectedCategory === "sunscreen" && !cat.includes("sunscreen")) return false;
+        if (selectedCategory === "moisturizer" && !cat.includes("moisturizer") && !cat.includes("gel")) return false;
+        if (selectedCategory === "cleanser" && !cat.includes("cleanser") && !cat.includes("wash")) return false;
+        if (selectedCategory === "treatment" && !cat.includes("mask") && !cat.includes("treatment")) return false;
+        if (selectedCategory === "lipcare" && !cat.includes("lip")) return false;
 
         // Search query
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase();
-          const matchName = p.productName.toLowerCase().includes(q);
-          const matchCategory = p.category.toLowerCase().includes(q);
+          const matchName = (p.productName || "").toLowerCase().includes(q);
+          const matchCategory = cat.includes(q);
           const matchIng = (p.activeIngredients || []).some((ing) => ing.toLowerCase().includes(q));
           const matchClaim = (p.verifiedClaims || []).some((c) => c.toLowerCase().includes(q));
           if (!matchName && !matchCategory && !matchIng && !matchClaim) return false;
@@ -93,7 +95,7 @@ export default function ProductLibraryPage() {
             Dot & Key Product Library
           </h1>
           <p className="text-xs sm:text-sm text-ink-muted mt-0.5">
-            Searchable catalogue of verified Dot & Key formulas. Select a product to anchor all competitor benchmarks and campaign generation.
+            Searchable catalogue of verified Dot & Key formulas with real retail pricing and live e-commerce links.
           </p>
         </div>
 
@@ -141,7 +143,7 @@ export default function ProductLibraryPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by name, ingredient (e.g. Kombucha, Cica, Hyaluronic)..."
+              placeholder="Search by name, ingredient (e.g. Dragon Fruit, PDRN, Niacinamide, Ceramides)..."
               className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-app-subtle border border-line-subtle text-xs text-ink-primary placeholder-ink-muted focus:border-terracotta focus:outline-none transition-all"
             />
             {searchQuery && (
@@ -206,7 +208,7 @@ export default function ProductLibraryPage() {
               No matching products found
             </h3>
             <p className="text-xs text-ink-muted mt-1 max-w-sm mx-auto">
-              No Dot & Key products match your search query &ldquo;{searchQuery}&rdquo;. Try searching by active ingredient (e.g. Kombucha, Cica) or reset filters.
+              No Dot & Key products match your search query &ldquo;{searchQuery}&rdquo;. Try searching by active ingredient (e.g. Dragon Fruit, PDRN, Niacinamide) or reset filters.
             </p>
           </div>
           <button
@@ -248,22 +250,45 @@ export default function ProductLibraryPage() {
 
                 <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-3">
-                    {/* Brand + Evidence Badge */}
+                    {/* Brand + Live Store Link */}
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-app-subtle text-terracotta border border-line-subtle">
                         {prod.brand}
                       </span>
-                      <EvidenceBadge id={prod.evidenceId} />
+                      {prod.sourceUrl && (
+                        <a
+                          href={prod.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 font-mono text-[11px] font-semibold text-terracotta hover:underline"
+                          title="View live retail listing on official store"
+                        >
+                          <span>Store Listing</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
                     </div>
 
-                    {/* Product Title */}
-                    <div>
-                      <h3 className="font-serif text-lg font-bold text-ink-primary leading-snug">
-                        {prod.productName}
-                      </h3>
-                      <span className="text-xs text-ink-muted block mt-0.5">
-                        {prod.category}
-                      </span>
+                    {/* Product Image & Title */}
+                    <div className="flex items-start gap-3">
+                      {prod.image && (
+                        <div className="w-14 h-14 rounded-xl bg-white border border-line-subtle overflow-hidden shrink-0 flex items-center justify-center p-1 shadow-sm">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={prod.image}
+                            alt={prod.productName}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-serif text-base font-bold text-ink-primary leading-snug line-clamp-2">
+                          {prod.productName}
+                        </h3>
+                        <span className="text-xs text-ink-muted block mt-0.5">
+                          {prod.category}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Pricing & Volume Matrix */}
@@ -277,11 +302,11 @@ export default function ProductLibraryPage() {
                       <div>
                         <span className="text-[10px] uppercase text-ink-muted block">Volume</span>
                         <span className="font-medium text-ink-primary">
-                          {prod.volumeML}ml
+                          {prod.volumeML}{prod.unit || "ml"}
                         </span>
                       </div>
                       <div>
-                        <span className="text-[10px] uppercase text-ink-muted block">Per ML</span>
+                        <span className="text-[10px] uppercase text-ink-muted block">Per {prod.unit || "ml"}</span>
                         <span className="font-bold text-terracotta">
                           ₹{prod.pricePerML}
                         </span>
@@ -303,7 +328,8 @@ export default function ProductLibraryPage() {
                     {/* Active Ingredients */}
                     {prod.activeIngredients && prod.activeIngredients.length > 0 && (
                       <div className="space-y-1.5 pt-1">
-                        <span className="text-[10px] font-mono uppercase font-bold text-ink-muted block">
+                        <span className="text-[10px] font-mono uppercase font-bold text-ink-muted flex items-center gap-1">
+                          <Sparkles className="w-3 h-3 text-terracotta" />
                           Hero Actives
                         </span>
                         <div className="flex flex-wrap gap-1">
@@ -349,7 +375,7 @@ export default function ProductLibraryPage() {
                     <button
                       type="button"
                       onClick={() => handleSelectProduct(prod)}
-                      className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-2 ${
+                      className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 ${
                         isSelected
                           ? "bg-app-subtle text-terracotta border border-terracotta/40 hover:bg-terracotta/10"
                           : "bg-terracotta text-ink-inverted hover:bg-terracotta-hover shadow-clay-sm"
@@ -371,11 +397,24 @@ export default function ProductLibraryPage() {
                     <button
                       type="button"
                       onClick={() => openEvidence(prod)}
-                      className="p-2.5 rounded-xl bg-app-subtle text-ink-muted hover:text-ink-primary hover:bg-app-card border border-line-subtle transition-colors"
+                      className="px-3 py-2.5 rounded-xl bg-app-subtle text-ink-primary hover:bg-app-card border border-line-subtle transition-colors text-xs font-medium flex items-center gap-1.5"
                       title="Inspect full product specification"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <Layers className="w-3.5 h-3.5 text-terracotta" />
+                      <span>Spec</span>
                     </button>
+
+                    {prod.sourceUrl && (
+                      <a
+                        href={prod.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 rounded-xl bg-app-subtle text-ink-muted hover:text-terracotta hover:bg-app-card border border-line-subtle transition-colors"
+                        title="Open e-commerce website"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

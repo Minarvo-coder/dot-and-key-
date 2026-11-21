@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { X, ExternalLink, ShieldCheck, Star, Calendar, User, Tag } from "lucide-react";
+import { X, ExternalLink, ShieldCheck, Star, Calendar, User, Tag, Sparkles } from "lucide-react";
 import { useApp } from "@/components/AppContext";
 
 export default function EvidenceDrawer({ evidence: propEvidence, isOpen: propIsOpen, onClose: propOnClose }) {
@@ -42,7 +42,9 @@ export default function EvidenceDrawer({ evidence: propEvidence, isOpen: propIsO
           <div className="flex items-start justify-between pb-4 border-b border-line-subtle">
             <div>
               <span className="inline-block px-2.5 py-1 rounded bg-sage-soft text-sage-dark font-mono text-xs font-semibold uppercase tracking-wider mb-2 border border-sage/20">
-                {evidence.id || evidence.evidenceId}
+                {isReview
+                  ? (evidence.id || evidence.evidenceId || "CUSTOMER REVIEW")
+                  : `${evidence.brand || "DOT & KEY"} • ${evidence.volumeML ? `${evidence.volumeML}${evidence.unit || 'ml'}` : "CATALOGUE"}`}
               </span>
               <h2 className="font-serif text-2xl text-ink-primary font-bold">
                 {isReview ? "Customer Feedback Record" : "Product Specification Record"}
@@ -155,85 +157,151 @@ export default function EvidenceDrawer({ evidence: propEvidence, isOpen: propIsO
                   </div>
                 </div>
               )}
-            </div>
-          ) : (
-            /* Product Spec Display */
-            <div className="space-y-4">
-              <div className="p-4 bg-app-subtle rounded-xl border border-line-subtle space-y-2">
-                <div className="text-xs font-semibold text-terracotta uppercase">
-                  {evidence.brand}
-                </div>
-                <div className="text-base font-serif text-ink-primary font-bold">
-                  {evidence.productName}
-                </div>
-                <div className="text-xs text-ink-muted">{evidence.category}</div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 bg-app-bg rounded-lg border border-line-subtle">
-                  <span className="text-ink-muted block mb-0.5">Retail Price</span>
-                  <span className="font-semibold text-base text-ink-primary">
-                    ₹{evidence.retailPriceINR}
-                  </span>
-                  <span className="text-ink-muted block text-[11px]">
-                    ({evidence.volumeML}ml volume)
-                  </span>
-                </div>
-                <div className="p-3 bg-app-bg rounded-lg border border-line-subtle">
-                  <span className="text-ink-muted block mb-0.5">Normalized Price</span>
-                  <span className="font-semibold text-base text-ink-primary">
-                    ₹{evidence.pricePerML} / ml
-                  </span>
-                  <span className="text-ink-muted block text-[11px]">Standardized metric</span>
-                </div>
-              </div>
-
-              {evidence.activeIngredients && (
-                <div className="space-y-2">
-                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
-                    Active Formulation Ingredients
-                  </span>
-                  <ul className="space-y-1 text-xs">
-                    {evidence.activeIngredients.map((ing, i) => (
-                      <li
-                        key={i}
-                        className="p-2 bg-app-subtle rounded border border-line-subtle text-ink-primary"
-                      >
-                        {ing}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {evidence.verifiedClaims && (
-                <div className="space-y-2">
-                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
-                    Verified Package Claims
-                  </span>
-                  <ul className="space-y-1 text-xs">
-                    {evidence.verifiedClaims.map((claim, i) => (
-                      <li
-                        key={i}
-                        className="p-2 bg-status-success-bg text-status-success rounded border border-sage/30 flex items-center gap-1.5"
-                      >
-                        <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                        {claim}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
+              {/* Source Link */}
               {evidence.sourceUrl && (
                 <a
                   href={evidence.sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-terracotta hover:text-terracotta-hover transition-colors underline"
+                  className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-terracotta hover:underline"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
-                  View Original Retail Listing
+                  View Original Source Listing ↗
+                </a>
+              )}
+            </div>
+          ) : (
+            /* Product Spec Display */
+            <div className="space-y-4">
+              <div className="p-4 bg-app-subtle rounded-xl border border-line-subtle flex items-start gap-3.5">
+                {evidence.image && (
+                  <div className="w-16 h-16 rounded-xl bg-white border border-line-subtle overflow-hidden shrink-0 flex items-center justify-center p-1 shadow-sm">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={evidence.image}
+                      alt={evidence.productName}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                )}
+                <div className="min-w-0 flex-1 space-y-1">
+                  <div className="text-[11px] font-mono font-bold text-terracotta uppercase tracking-wider">
+                    {evidence.brand || "Dot & Key"}
+                  </div>
+                  <div className="text-base font-serif text-ink-primary font-bold leading-snug">
+                    {evidence.productName}
+                  </div>
+                  <div className="text-xs text-ink-muted">{evidence.category}</div>
+                </div>
+              </div>
+
+              {/* Price Matrix */}
+              <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="p-3.5 bg-app-bg rounded-xl border border-line-subtle">
+                  <span className="text-ink-muted block text-[11px] uppercase font-mono font-bold mb-1">
+                    Retail Price
+                  </span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-serif font-bold text-xl text-ink-primary">
+                      ₹{evidence.retailPriceINR}
+                    </span>
+                    <span className="text-ink-muted text-xs">
+                      ({evidence.volumeML || 50}{evidence.unit || "ml"})
+                    </span>
+                  </div>
+                  <span className="text-ink-muted block text-[11px] mt-0.5">
+                    Official e-commerce price
+                  </span>
+                </div>
+                <div className="p-3.5 bg-app-bg rounded-xl border border-line-subtle">
+                  <span className="text-ink-muted block text-[11px] uppercase font-mono font-bold mb-1">
+                    Normalized Price
+                  </span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-serif font-bold text-xl text-terracotta">
+                      ₹{evidence.pricePerML || (evidence.retailPriceINR && evidence.volumeML ? (evidence.retailPriceINR / evidence.volumeML).toFixed(2) : "—")}
+                    </span>
+                    <span className="text-ink-muted text-xs">
+                      / {evidence.unit || "ml"}
+                    </span>
+                  </div>
+                  <span className="text-ink-muted block text-[11px] mt-0.5">
+                    Standardized unit metric
+                  </span>
+                </div>
+              </div>
+
+              {/* Active Formulation Ingredients */}
+              {evidence.activeIngredients && evidence.activeIngredients.length > 0 && (
+                <div className="space-y-2">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-ink-primary flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-terracotta" />
+                    Active Formulation Ingredients
+                  </span>
+                  <ul className="space-y-1.5 text-xs">
+                    {evidence.activeIngredients
+                      .filter((ing) => !ing.startsWith("_") && !ing.startsWith("fltr_") && !ing.startsWith("score:"))
+                      .map((ing, i) => (
+                        <li
+                          key={i}
+                          className="p-2.5 bg-app-subtle rounded-xl border border-line-subtle text-ink-primary flex items-center gap-2.5"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-terracotta shrink-0" />
+                          <span className="font-medium">{ing}</span>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Texture and Application Finish */}
+              {evidence.texture && (
+                <div className="p-3.5 bg-app-subtle rounded-xl border border-line-subtle text-xs space-y-1">
+                  <span className="text-[10px] font-mono font-bold uppercase text-ink-muted block">
+                    Texture & Application Finish
+                  </span>
+                  <div className="text-ink-primary font-medium">
+                    {evidence.texture} — <span className="text-ink-muted">{evidence.finish}</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Verified Package Claims */}
+              {evidence.verifiedClaims && evidence.verifiedClaims.length > 0 && (
+                <div className="space-y-2">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-ink-primary">
+                    Verified Package Claims
+                  </span>
+                  <ul className="space-y-1.5 text-xs">
+                    {evidence.verifiedClaims.map((claim, i) => (
+                      <li
+                        key={i}
+                        className="p-2.5 bg-status-success-bg text-status-success rounded-xl border border-sage/30 flex items-center gap-2"
+                      >
+                        <ShieldCheck className="w-4 h-4 shrink-0 text-sage-dark" />
+                        <span className="font-medium">{claim}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* E-Commerce Website Link */}
+              {evidence.sourceUrl && (
+                <a
+                  href={evidence.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 p-3.5 rounded-xl bg-app-subtle hover:bg-app-card border border-terracotta/40 hover:border-terracotta flex items-center justify-between text-xs font-semibold text-terracotta transition-all shadow-clay-sm group"
+                >
+                  <span className="flex items-center gap-2">
+                    <ExternalLink className="w-4 h-4 shrink-0 text-terracotta" />
+                    <span>View Product on E-Commerce Website ({evidence.sourcePlatform || "dotandkey.com"})</span>
+                  </span>
+                  <span className="text-[11px] font-mono text-ink-muted group-hover:text-terracotta">
+                    Visit Listing ↗
+                  </span>
                 </a>
               )}
             </div>
@@ -243,7 +311,7 @@ export default function EvidenceDrawer({ evidence: propEvidence, isOpen: propIsO
         {/* Footer */}
         <div className="pt-6 mt-6 border-t border-line-subtle flex items-center justify-between">
           <span className="text-[11px] text-ink-muted">
-            Data Integrity: Audited Research Fixture
+            Data Provenance: Public Retail Pages
           </span>
           <button
             onClick={onClose}
