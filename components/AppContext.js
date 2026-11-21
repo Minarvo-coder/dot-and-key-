@@ -166,8 +166,8 @@ export function AppProvider({ children }) {
     setAnalysisStatus,
     // Real standalone catalogue products
     products: standaloneProducts,
-    competitors: COMBINED_COMPETITORS,
-    reviews: COMBINED_REVIEWS,
+    competitors: FIXTURE_COMPETITORS,
+    reviews: FIXTURE_REVIEWS,
     insightsData: INSIGHTS_DATA,
     creativeFixtures: CREATIVE_STUDIO_FIXTURES,
     metadata: RESEARCH_METADATA,

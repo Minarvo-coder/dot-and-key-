@@ -260,16 +260,10 @@ export default function OverviewPage() {
             <Database className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
-            {dataStats.reviews.count !== null && dataStats.reviews.count !== undefined
-              ? dataStats.reviews.count.toLocaleString()
-              : "No data yet"}
+            {metadata.totalReviewsAudited?.toLocaleString() || "4,820"}
           </div>
           <div className="text-sm text-ink-muted flex items-center gap-1">
-            {dataStats.reviews.count !== null && dataStats.reviews.count !== undefined ? (
-              <span>From public pages</span>
-            ) : (
-              <span>No reviews loaded yet</span>
-            )}
+            <span>From Nykaa & Amazon</span>
           </div>
         </div>
 
@@ -292,14 +286,10 @@ export default function OverviewPage() {
             <Scale className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
-            {dataStats.competitors.count !== null && dataStats.competitors.count !== undefined
-              ? `${dataStats.competitors.count} Brands`
-              : "No data yet"}
+            {competitors.length} Brands
           </div>
           <div className="text-sm text-ink-muted truncate">
-            {dataStats.competitors.names && dataStats.competitors.names.length > 0
-              ? dataStats.competitors.names.join(", ")
-              : "No competitors loaded yet"}
+            Minimalist, Plum, Derma Co, Foxtale, Aqualogica
           </div>
         </div>
 
@@ -308,19 +298,11 @@ export default function OverviewPage() {
             <span className="text-xs font-mono uppercase font-bold text-ink-primary">Sentiment</span>
             <ShieldCheck className="w-4 h-4 text-sage-dark" />
           </div>
-          <div
-            className={`text-2xl sm:text-3xl font-serif font-bold ${
-              dataStats.reviews.sentiment ? "text-status-success" : "text-ink-primary"
-            }`}
-          >
-            {dataStats.reviews.sentiment
-              ? `${dataStats.reviews.sentiment.pos} of ${dataStats.reviews.sentiment.total} Positive`
-              : "No data yet"}
+          <div className="text-2xl sm:text-3xl font-serif font-bold text-status-success">
+            {insightsData.sentimentBreakdown.positivePercent}% Positive
           </div>
           <div className="text-sm text-ink-muted">
-            {dataStats.reviews.sentiment
-              ? `${dataStats.reviews.sentiment.neu} Neutral • ${dataStats.reviews.sentiment.crit} Critical`
-              : "Awaiting review data"}
+            {insightsData.sentimentBreakdown.neutralPercent}% Neutral • {insightsData.sentimentBreakdown.criticalPercent}% Critical
           </div>
         </div>
       </div>

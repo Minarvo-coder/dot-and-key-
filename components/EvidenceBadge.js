@@ -2,9 +2,11 @@
 
 import React from "react";
 import { ExternalLink } from "lucide-react";
+import { useApp } from "@/components/AppContext";
 import { EVIDENCE_REVIEWS, COMPETITORS, PRODUCTS } from "@/data/researchFixtures";
 
 export default function EvidenceBadge({ id, sourceUrl, className = "" }) {
+  const { openEvidence } = useApp();
   let url = sourceUrl;
 
   if (!url && id) {
@@ -23,18 +25,34 @@ export default function EvidenceBadge({ id, sourceUrl, className = "" }) {
   }
 
   // Where a source exists, show a "View source" link. Where none exists, show nothing.
-  if (!url) return null;
+  if (!url && !id) return null;
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-flex items-center gap-1 font-mono text-xs font-semibold text-terracotta hover:underline ${className}`}
-      title="View public source"
-    >
-      <span>View source</span>
-      <ExternalLink className="w-3 h-3" />
-    </a>
+    <div className={`inline-flex items-center gap-2 ${className}`}>
+      {id && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            if (openEvidence) openEvidence(id);
+          }}
+          className="text-xs font-mono font-semibold text-terracotta hover:underline cursor-pointer"
+        >
+          Inspect Review
+        </button>
+      )}
+      {url && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 font-mono text-xs font-medium text-ink-muted hover:text-terracotta hover:underline"
+          title="View public source"
+        >
+          <span>Source</span>
+          <ExternalLink className="w-3 h-3" />
+        </a>
+      )}
+    </div>
   );
 }
