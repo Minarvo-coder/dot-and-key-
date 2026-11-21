@@ -61,74 +61,70 @@ export default function OverviewPage() {
   const workflowSteps = [
     {
       step: "01",
-      title: "Product Selected",
-      desc: selectedProduct ? selectedProduct.productName : "Choose subject",
+      title: "Product selected",
+      desc: selectedProduct ? selectedProduct.productName : "Choose a product",
       status: "completed",
       href: "/products",
       evidenceId: selectedProduct?.evidenceId,
     },
     {
       step: "02",
-      title: "Competitors Normalized",
-      desc: "5 market alternatives audited across price/ml",
+      title: "Competitors compared",
+      desc: "Compare pricing and features against alternatives",
       status: "completed",
       href: "/competitors",
-      evidenceId: "EVD-PROD-CP01",
     },
     {
       step: "03",
-      title: "Review Insights Ingested",
-      desc: `${metadata?.totalReviewsAudited?.toLocaleString() || "4,820"} reviews with 74% positive split`,
+      title: "Reviews analysed",
+      desc: "Customer feedback and sentiment breakdown",
       status: "completed",
       href: "/reviews",
-      evidenceId: "EVD-REV-DK001",
     },
     {
       step: "04",
-      title: "Opportunities Validated",
-      desc: "3 high-conviction market angles formulated",
+      title: "Opportunities found",
+      desc: "Market gaps and winning angles",
       status: "completed",
       href: "/opportunities",
-      evidenceId: "EVD-REV-CP001",
     },
     {
       step: "05",
-      title: "Marketing Studio Ready",
-      desc: "6 campaign formats generated across 4 languages",
+      title: "Content ready",
+      desc: "Campaign copy generated across multiple formats",
       status: "ready",
       href: "/marketing-studio",
-      evidenceId: "",
     },
   ];
 
   const quickActions = [
     {
       title: "Product Catalogue",
-      desc: "Browse 6 Dot & Key products and switch active research subject.",
+      desc: "Browse Dot & Key products and switch the active research subject.",
       href: "/products",
       icon: Layers,
-      tag: "6 Products",
+      tag: "Products",
     },
     {
       title: "Competitor Analysis",
-      desc: "Benchmark 5 competitors by price/ml, ratings, claims, and flaws.",
+      desc: "Compare competitors by price, ratings, claims, and flaws.",
       href: "/competitors",
       icon: Scale,
-      tag: "5 Competitors",
+      tag: "Competitors",
     },
     {
       title: "Review Insights",
-      desc: "Inspect customer loves, sentiment breakdown, and verbatim quotes.",
+      desc: "Inspect customer feedback, sentiment breakdown, and real quotes.",
       href: "/reviews",
       icon: MessageSquareQuote,
-      tag: "4,820 Reviews",
+      tag: "Reviews",
     },
     {
       title: "Market Opportunities",
-      desc: "Review validated competitor gaps and high-conviction angles.",
+      desc: "Review competitor gaps and actionable market angles.",
       href: "/opportunities",
       icon: TrendingUp,
-      tag: "3 Angles",
+      tag: "Opportunities",
     },
     {
       title: "Marketing Studio",
@@ -139,10 +135,10 @@ export default function OverviewPage() {
     },
     {
       title: "SWOT Analysis",
-      desc: "Explore grounded strengths, weaknesses, opportunities, and threats.",
+      desc: "Explore strengths, weaknesses, opportunities, and threats.",
       href: "/swot",
       icon: BarChart2,
-      tag: "Audited Matrix",
+      tag: "Matrix",
     },
   ];
 
@@ -155,18 +151,17 @@ export default function OverviewPage() {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light border border-line-subtle text-xs font-mono font-medium text-ink-primary">
               <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
-              <span>{metadata.datasetName}</span>
+              <span>Dot & Key Intelligence</span>
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl font-bold text-ink-primary tracking-tight leading-tight">
-              Market Intelligence that Creates Marketing
+              Pick a product. See what the market says. Get ready-to-use ads.
             </h1>
             <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-              Welcome to KAIROS. Your research command center transforms audited retail reviews, competitor vulnerability data, and product claims into verifiable, high-converting marketing assets for Dot & Key.
+              Turn customer reviews and competitor data into ready-to-use marketing copy for Dot & Key.
             </p>
             <p className="text-[11px] font-mono text-ink-muted">
               Data collected from public pages (dotandkey.com, Nykaa, Amazon) on 21 Nov 2026
             </p>
-
           </div>
 
           {/* Quick CTA to Studio */}
@@ -271,7 +266,7 @@ export default function OverviewPage() {
               Product-to-Content Workflow Progress
             </h2>
             <p className="text-xs text-ink-muted mt-0.5">
-              Five linked stages ensuring all marketing output is anchored in audited retail facts
+              Five linked stages to turn research into marketing content
             </p>
           </div>
           <span className="px-3 py-1 rounded-full text-xs font-semibold bg-status-success-bg text-status-success border border-sage/20 self-start sm:self-auto">
