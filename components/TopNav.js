@@ -167,10 +167,10 @@ export default function TopNav() {
 
           {/* Right: Language Selector, Notifications, User Profile */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Audited Status Pill (Desktop) */}
+            {/* Public Intelligence Status Pill (Desktop) */}
             <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-status-success-bg border border-sage/20 text-xs text-status-success font-medium">
               <span className="w-2 h-2 rounded-full bg-sage-dark animate-pulse" />
-              <span>{metadata?.totalReviewsAudited?.toLocaleString() || "4,820"} Reviews Verified</span>
+              <span>Public Intelligence</span>
             </div>
 
             {/* Language Selector */}

@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useApp } from "@/components/AppContext";
 import EvidenceBadge from "@/components/EvidenceBadge";
+import { getCatalogueStats } from "@/data/productsLoader";
 import {
   Sparkles,
   ArrowRight,
@@ -31,6 +32,31 @@ export default function OverviewPage() {
     metadata,
     openEvidence,
   } = useApp();
+
+  const [dataStats, setDataStats] = useState({
+    catalogue: getCatalogueStats(),
+    reviews: { count: null, sentiment: null, topInsights: [] },
+    competitors: { count: null, names: [] },
+  });
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const res = await fetch(
+          `/api/overview-data?productId=${selectedProduct?.id || ""}&productTitle=${encodeURIComponent(
+            selectedProduct?.title || selectedProduct?.productName || ""
+          )}`
+        );
+        if (res.ok) {
+          const json = await res.json();
+          setDataStats(json);
+        }
+      } catch (e) {
+        console.error("Failed to load overview data:", e);
+      }
+    }
+    loadData();
+  }, [selectedProduct?.id, selectedProduct?.title]);
 
   const workflowSteps = [
     {
@@ -211,10 +237,16 @@ export default function OverviewPage() {
             <Database className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
-            {metadata.totalReviewsAudited?.toLocaleString() || "4,820"}
+            {dataStats.reviews.count !== null && dataStats.reviews.count !== undefined
+              ? dataStats.reviews.count.toLocaleString()
+              : "No data yet"}
           </div>
           <div className="text-[11px] text-ink-muted flex items-center gap-1">
-            <span className="text-status-success font-semibold">100% Verified</span> from Nykaa & Amazon
+            {dataStats.reviews.count !== null && dataStats.reviews.count !== undefined ? (
+              <span>From public pages</span>
+            ) : (
+              <span>No reviews loaded yet</span>
+            )}
           </div>
         </div>
 
@@ -224,36 +256,48 @@ export default function OverviewPage() {
             <Layers className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
-            {products.length} Products
+            {dataStats.catalogue.count} Products
           </div>
           <div className="text-[11px] text-ink-muted flex items-center gap-1">
-            <span>Price range: ₹495 - ₹695</span>
+            <span>Price range: {dataStats.catalogue.priceRange || dataStats.catalogue.priceRangeFormatted}</span>
           </div>
         </div>
 
         <div className="p-5 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm space-y-2">
           <div className="flex items-center justify-between text-ink-muted">
-            <span className="text-[11px] font-mono uppercase font-semibold">Competitors Benchmarked</span>
+            <span className="text-[11px] font-mono uppercase font-semibold">Competitors Compared</span>
             <Scale className="w-4 h-4 text-terracotta" />
           </div>
           <div className="text-2xl sm:text-3xl font-serif font-bold text-ink-primary">
-            {competitors.length} Brands
+            {dataStats.competitors.count !== null && dataStats.competitors.count !== undefined
+              ? `${dataStats.competitors.count} Brands`
+              : "No data yet"}
           </div>
-          <div className="text-[11px] text-ink-muted">
-            Minimalist, Plum, Derma Co, Foxtale, Aqualogica
+          <div className="text-[11px] text-ink-muted truncate">
+            {dataStats.competitors.names && dataStats.competitors.names.length > 0
+              ? dataStats.competitors.names.join(", ")
+              : "No competitors loaded yet"}
           </div>
         </div>
 
         <div className="p-5 rounded-2xl bg-app-card border border-line-subtle shadow-clay-sm space-y-2">
           <div className="flex items-center justify-between text-ink-muted">
-            <span className="text-[11px] font-mono uppercase font-semibold">Sentiment Split</span>
+            <span className="text-[11px] font-mono uppercase font-semibold">Sentiment</span>
             <ShieldCheck className="w-4 h-4 text-sage-dark" />
           </div>
-          <div className="text-2xl sm:text-3xl font-serif font-bold text-status-success">
-            {insightsData.sentimentBreakdown.positivePercent}% Positive
+          <div
+            className={`text-2xl sm:text-3xl font-serif font-bold ${
+              dataStats.reviews.sentiment ? "text-status-success" : "text-ink-primary"
+            }`}
+          >
+            {dataStats.reviews.sentiment
+              ? `${dataStats.reviews.sentiment.positivePercent}% Positive`
+              : "No data yet"}
           </div>
           <div className="text-[11px] text-ink-muted">
-            18% Neutral • 8% Critical
+            {dataStats.reviews.sentiment
+              ? `${dataStats.reviews.sentiment.neutralPercent}% Neutral • ${dataStats.reviews.sentiment.criticalPercent}% Critical`
+              : "Awaiting review data"}
           </div>
         </div>
       </div>
