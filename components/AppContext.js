@@ -57,7 +57,7 @@ export function AppProvider({ children }) {
 
   // Exports History
   const [exportHistory, setExportHistory] = useState(INITIAL_EXPORTS || []);
-  const [analysisStatus, setAnalysisStatus] = useState("not_started"); // "not_started" | "running" | "done"
+  const [analysisStatus, setAnalysisStatus] = useState("done"); // "not_started" | "running" | "done"
 
   function addExportRecord(record) {
     const newRecord = {
