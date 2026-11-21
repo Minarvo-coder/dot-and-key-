@@ -163,6 +163,9 @@ export default function OverviewPage() {
             <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
               Welcome to KAIROS. Your research command center transforms audited retail reviews, competitor vulnerability data, and product claims into verifiable, high-converting marketing assets for Dot & Key.
             </p>
+            <p className="text-[11px] font-mono text-ink-muted">
+              Data collected from public pages (dotandkey.com, Nykaa, Amazon) on 21 Nov 2026
+            </p>
             <div className="pt-2 flex items-center gap-3 flex-wrap text-xs">
               <span className="font-medium text-ink-muted">Active Subject:</span>
               <span className="px-3 py-1 rounded-xl bg-app-subtle border border-terracotta/30 text-ink-primary font-semibold flex items-center gap-2">

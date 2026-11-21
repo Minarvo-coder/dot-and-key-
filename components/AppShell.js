@@ -39,9 +39,7 @@ export default function AppShell({ children }) {
               <span className="font-mono text-[11px] text-terracotta">Dot & Key Skincare Intelligence</span>
             </div>
             <div className="flex items-center gap-4 text-[11px] font-mono">
-              <span>Provenance: Verified Retail Audit</span>
-              <span>•</span>
-              <span>{metadata?.lastAuditedDate}</span>
+              <span>Data collected from public pages (dotandkey.com, Nykaa, Amazon) on 21 Nov 2026</span>
             </div>
           </div>
         </footer>
